@@ -229,7 +229,7 @@
                             "upload_date"   => $date_at,
                             "upload_time"   => $time_at,
                             "upload_type"   => $type,
-                            "upload_name"   => $name,
+                            "upload_name"   => (($name == null)? :$name),
                             "upload_size"   => (($size == null)? 0:$size),
                             "upload_file"   => (($file == null)? "":$file),
                             "upload_path"   => (($file == null)? "":$path),
@@ -255,16 +255,21 @@
                     ->format('H:i:s');
 
                 $upload_id = dBase::dbGetFieldByThreeId($table, 'upload_id', 'satker_id', $satker, 'menu_id', $menu, 'reff_id', $reff);
-                $rst = DB::table($table)
-                    ->where('upload_id', $upload_id)
-                    ->update([
-                        "upload_date"   => $date_at,
-                        "upload_time"   => $time_at,
-                        "upload_name"   => $name,
-                        "upload_size"   => $size,
-                        "upload_file"   => $file,
-                        "upload_path"   => $path,
-                    ]);   
+                if($file != "") {
+                    $rst = DB::table($table)
+                        ->where('upload_id', $upload_id)
+                        ->update([
+                            "upload_date"   => $date_at,
+                            "upload_time"   => $time_at,
+                            "upload_name"   => (($name == null)? :$name),
+                            "upload_size"   => (($size == null)? 0:$size),
+                            "upload_file"   => (($file == null)? "":$file),
+                            "upload_path"   => (($file == null)? "":$path),
+                        ]); 
+                }
+                else {
+                    $rst = 0;
+                }  
             } 
             
             return $rst;
