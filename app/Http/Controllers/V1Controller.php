@@ -3071,7 +3071,7 @@ class V1Controller extends Controller
                     }
 
                     $news = array();
-                    $article = DB::table('tp_news')->where('satker_id', $satker_id)->where('news_status', 1)->limit(4)->orderBy('news_date', 'DESC')->get();
+                    $article = DB::table('tp_news')->where('satker_id', $satker_id)->where('news_category', 'Berita')->where('news_status', 1)->limit(4)->orderBy('news_date', 'DESC')->get();
                     foreach($article as $row) {
                         $news[] = array(
                             "id"         => (($row->news_id == null? "":$row->news_id)),
