@@ -2065,11 +2065,11 @@ class V1Controller extends Controller
                     
                     if($category != "") {
                         $cnts = DB::table('tp_news')->where('news_category', $category)->where('satker_id', $satker_id)->where('news_status', 1)->count();
-                        $temp = DB::table('tp_news')->where('news_category', $category)->where('satker_id', $satker_id)->where('news_status', 1)->take($limit)->skip($offset)->get();
+                        $temp = DB::table('tp_news')->where('news_category', $category)->where('satker_id', $satker_id)->where('news_status', 1)->take($limit)->skip($offset)->orderBy('news_date', 'DESC')->get();
                     } 
                     else {
                         $cnts = DB::table('tp_news')->where('satker_id', $satker_id)->where('news_status', 1)->count();
-                        $temp = DB::table('tp_news')->where('satker_id', $satker_id)->where('news_status', 1)->take($limit)->skip($offset)->get();
+                        $temp = DB::table('tp_news')->where('satker_id', $satker_id)->where('news_status', 1)->take($limit)->skip($offset)->orderBy('news_date', 'DESC')->get();
                     }
                     
                     foreach($temp as $row) {
