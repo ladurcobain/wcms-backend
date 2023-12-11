@@ -158,6 +158,35 @@
             return $result;
         }
 
+        public static function find_link_map($str) {
+            $str = str_replace('<iframe src="', '', $str);
+            $str = str_replace('</iframe>', '', $str);
+            $str = str_replace('style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">', '', $str);
+
+            $pure = strip_tags($str);
+            
+            $posHeight = Status::get_positition_of_char_in_string('=', $pure);
+            $removeHeight = substr($pure, 0, $posHeight);
+            $pure = str_replace('height', '', $removeHeight);
+            
+            $posWidth = Status::get_positition_of_char_in_string('=', $pure);
+            $removeWidth = substr($pure, 0, $posWidth);
+            $pure = str_replace('width', '', $removeWidth);
+
+            $string = substr($pure, 0, (strlen($pure) - 2));
+            return $string;
+        }
+
+        public static function youtube_embded($str) {
+            $string = str_replace('watch', 'embed', $str);
+            return $string;
+        }
+
+        public static function youtube_watch($str) {
+            $string = str_replace('embed', 'watch', $str);
+            return $string;
+        }
+
         public static function monthName($value) {
             switch($value) {
                 case "01" :

@@ -326,6 +326,7 @@ $router->group(['prefix' => 'api'], function () use ($router) {
     $router->post('conference/news/insert-data','ConferenceNewsController@insertData');
     $router->post('conference/news/update-data','ConferenceNewsController@updateData');
     $router->post('conference/news/delete-data','ConferenceNewsController@deleteData');
+    $router->post('conference/news/get-new','ConferenceNewsController@getNew');
 
 
     //Information-Dpo
@@ -420,6 +421,7 @@ $router->group(['prefix' => 'api'], function () use ($router) {
     $router->post('v1/get-information-infrastructure','V1Controller@getInformationInfrastructure');
     $router->post('v1/get-information-service','V1Controller@getInformationService');
     $router->post('v1/get-information-dpo','V1Controller@getInformationDpo');
+    $router->post('v1/get-information-structurals','V1Controller@getInformationStructurals');
 
     $router->post('v1/get-conference-news','V1Controller@getConferenceNews');
     $router->post('v1/get-conference-announcement','V1Controller@getConferenceAnnouncement');
@@ -455,6 +457,7 @@ $router->group(['prefix' => 'api'], function () use ($router) {
     $router->post('v1/get-search','V1Controller@getSearch');
     $router->post('v1/get-conference-news-other','V1Controller@getConferenceNewsOther');
     $router->post('v1/get-conference-news-headline','V1Controller@getConferenceNewsHeadline');
+    $router->post('v1/get-conference-news-regional','V1Controller@getConferenceNewsRegional');
     $router->post('v1/menu-navigation','V1Controller@menuNavigation');
     $router->post('v1/menu-access','V1Controller@menuAccess');
 

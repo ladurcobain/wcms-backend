@@ -68,6 +68,10 @@ class AuthController extends Controller
                     ]); 
                 
                 dBase::setLogActivity($rst, $user['user_id'], $now, 'Login', 'Masuk aplikasi', $ip); 
+
+                if($user['satker_id'] != "") {
+                    Dbase::dbSetFieldById('tm_satker', 'updated_at', $now, 'satker_id', $user['satker_id']);
+                }
             }
             else {
                 $arr = array();

@@ -75,6 +75,7 @@ class InformationStructuralController extends Controller
 
     public function insertData(Request $request) {
         $satker      = $request->satker_id;
+        $position    = $request->position;
         $name        = $request->name;
         $nip         = $request->nip;
         $title       = $request->title;
@@ -117,6 +118,7 @@ class InformationStructuralController extends Controller
             $now = Carbon::now();
             $rst = DB::table($this->table)
                 ->insertGetId([
+                    "structural_position"      => (($position == null)? 1:$position),
                     "structural_name"          => $name,
                     "structural_nip"           => $nip,
                     "structural_title"         => $title,
@@ -149,6 +151,7 @@ class InformationStructuralController extends Controller
     public function updateData(Request $request) {
         $id          = $request->structural_id;
         $status      = $request->status;
+        $position    = $request->position;
         $name        = $request->name;
         $nip         = $request->nip;
         $title       = $request->title;
@@ -201,6 +204,7 @@ class InformationStructuralController extends Controller
             $rst = DB::table($this->table)
                 ->where($this->field, $id)
                 ->update([
+                    "structural_position"      => (($position == null)? 1:$position),
                     "structural_status"        => $status,
                     "structural_name"          => $name,
                     "structural_nip"           => $nip,

@@ -390,7 +390,7 @@ class SatkerController extends Controller
 
     public function updateMedsos(Request $request) {
         $id            = $request->satker_id;
-        $embed_map     = $request->embed_map;
+        $map_google    = $request->embed_map;
         $url_facebook  = $request->url_facebook;
         $url_twitter   = $request->url_twitter;
         $url_instagram = $request->url_instagram;
@@ -405,6 +405,7 @@ class SatkerController extends Controller
         if($validate == "") {
             $now  = Carbon::now();
 
+            $embed_map = Status::find_link_map($map_google);
             $rst = DB::table($this->table)
                 ->where($this->field, $id)
                 ->update([
@@ -520,6 +521,9 @@ class SatkerController extends Controller
                         200
                     );
                 }
+            }
+            else {
+                $videolink = Status::youtube_watch($videolink);
             }
             
             $now  = Carbon::now();

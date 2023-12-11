@@ -1172,6 +1172,7 @@ class V1Controller extends Controller
                         $url = Init::backendUrl() .'api/v1/read-information-structural/'. $info['profile']['satker_slug'] .'/@'. $row->structural_id .'&'. Status::str_url($row->structural_name);
                         $list[] = array(
                             "id"            => $row->structural_id,
+                            "position"      => (($row->structural_position == null? "1":$row->structural_position)),
                             "name"          => (($row->structural_name == null? "":$row->structural_name)),
                             "nip"           => (($row->structural_nip == null? "":$row->structural_nip)),
                             "title"         => (($row->structural_title == null? "":$row->structural_title)),
@@ -1233,6 +1234,7 @@ class V1Controller extends Controller
                 if($temp != "[]") {
                     foreach($temp as $row) {
                         $read = array(
+                            "position"      => (($row->structural_position == null? "1":$row->structural_position)),
                             "name"          => (($row->structural_name == null? "":$row->structural_name)),
                             "nip"           => (($row->structural_nip == null? "":$row->structural_nip)),
                             "title"         => (($row->structural_title == null? "":$row->structural_title)),
@@ -1262,6 +1264,154 @@ class V1Controller extends Controller
             $rst = 0;
         }  
 
+        return response()->json([
+            'status'    => Init::responseStatus($rst),
+            'message'   => (($validate != "")?$validate:Init::responseMessage($rst, 'View')),
+            'data'      => $data],
+            200
+        );
+    }
+
+    public function getInformationStructurals(Request $request) {
+        $data = array();
+        if(Init::checkHeader($request)) {
+            $slug = $request->slug;
+
+            $validate = Init::initValidate(
+                array('slug'), 
+                array($slug)
+            );
+    
+            if($validate == "") {
+                $satker = DB::table('tm_satker')->where('satker_status', 1)->where('satker_slug', $slug)->get();
+                if($satker != "[]") {
+                    $rst = 1;
+                    $satker_id = $satker[0]->satker_id;
+                    $info = Init::initSatkerInfo($satker_id, $satker);
+    
+                    $list = array();
+                    
+                    $arr_position1 = array();
+                    $position1 = DB::table('tp_structural')->where('satker_id', $satker_id)->where('structural_position', 1)->where('structural_status', 1)->get();
+                    foreach($position1 as $row) {
+                        $url = Init::backendUrl() .'api/v1/read-information-structural/'. $info['profile']['satker_slug'] .'/@'. $row->structural_id .'&'. Status::str_url($row->structural_name);
+                        $arr_position1[] = array(
+                            "id"            => $row->structural_id,
+                            "position"      => (($row->structural_position == null? "1":$row->structural_position)),
+                            "name"          => (($row->structural_name == null? "":$row->structural_name)),
+                            "nip"           => (($row->structural_nip == null? "":$row->structural_nip)),
+                            "title"         => (($row->structural_title == null? "":$row->structural_title)),
+                            "information"   => (($row->structural_information == null? "":$row->structural_information)),
+                            "size"          => (($row->structural_size == null)? 0:$row->structural_size),
+                            "image"         => (($row->structural_image == null? "":$row->structural_image)),
+                            "path"          => (($row->structural_path == null? Init::defaultImage():$row->structural_path)),
+                            "url"           => $url,
+                        );
+                    }
+
+                    $arr_position2 = array();
+                    $position2 = DB::table('tp_structural')->where('satker_id', $satker_id)->where('structural_position', 2)->where('structural_status', 1)->get();
+                    foreach($position2 as $row) {
+                        $url = Init::backendUrl() .'api/v1/read-information-structural/'. $info['profile']['satker_slug'] .'/@'. $row->structural_id .'&'. Status::str_url($row->structural_name);
+                        $arr_position2[] = array(
+                            "id"            => $row->structural_id,
+                            "position"      => (($row->structural_position == null? "1":$row->structural_position)),
+                            "name"          => (($row->structural_name == null? "":$row->structural_name)),
+                            "nip"           => (($row->structural_nip == null? "":$row->structural_nip)),
+                            "title"         => (($row->structural_title == null? "":$row->structural_title)),
+                            "information"   => (($row->structural_information == null? "":$row->structural_information)),
+                            "size"          => (($row->structural_size == null)? 0:$row->structural_size),
+                            "image"         => (($row->structural_image == null? "":$row->structural_image)),
+                            "path"          => (($row->structural_path == null? Init::defaultImage():$row->structural_path)),
+                            "url"           => $url,
+                        );
+                    }
+
+                    $arr_position3 = array();
+                    $position3 = DB::table('tp_structural')->where('satker_id', $satker_id)->where('structural_position', 3)->where('structural_status', 1)->get();
+                    foreach($position3 as $row) {
+                        $url = Init::backendUrl() .'api/v1/read-information-structural/'. $info['profile']['satker_slug'] .'/@'. $row->structural_id .'&'. Status::str_url($row->structural_name);
+                        $arr_position3[] = array(
+                            "id"            => $row->structural_id,
+                            "position"      => (($row->structural_position == null? "1":$row->structural_position)),
+                            "name"          => (($row->structural_name == null? "":$row->structural_name)),
+                            "nip"           => (($row->structural_nip == null? "":$row->structural_nip)),
+                            "title"         => (($row->structural_title == null? "":$row->structural_title)),
+                            "information"   => (($row->structural_information == null? "":$row->structural_information)),
+                            "size"          => (($row->structural_size == null)? 0:$row->structural_size),
+                            "image"         => (($row->structural_image == null? "":$row->structural_image)),
+                            "path"          => (($row->structural_path == null? Init::defaultImage():$row->structural_path)),
+                            "url"           => $url,
+                        );
+                    }
+
+                    $arr_position4 = array();
+                    $position4 = DB::table('tp_structural')->where('satker_id', $satker_id)->where('structural_position', 4)->where('structural_status', 1)->get();
+                    foreach($position4 as $row) {
+                        $url = Init::backendUrl() .'api/v1/read-information-structural/'. $info['profile']['satker_slug'] .'/@'. $row->structural_id .'&'. Status::str_url($row->structural_name);
+                        $arr_position4[] = array(
+                            "id"            => $row->structural_id,
+                            "position"      => (($row->structural_position == null? "1":$row->structural_position)),
+                            "name"          => (($row->structural_name == null? "":$row->structural_name)),
+                            "nip"           => (($row->structural_nip == null? "":$row->structural_nip)),
+                            "title"         => (($row->structural_title == null? "":$row->structural_title)),
+                            "information"   => (($row->structural_information == null? "":$row->structural_information)),
+                            "size"          => (($row->structural_size == null)? 0:$row->structural_size),
+                            "image"         => (($row->structural_image == null? "":$row->structural_image)),
+                            "path"          => (($row->structural_path == null? Init::defaultImage():$row->structural_path)),
+                            "url"           => $url,
+                        );
+                    }
+
+                    $arr_position5 = array();
+                    $position5 = DB::table('tp_structural')->where('satker_id', $satker_id)->where('structural_position', 5)->where('structural_status', 1)->get();
+                    foreach($position5 as $row) {
+                        $url = Init::backendUrl() .'api/v1/read-information-structural/'. $info['profile']['satker_slug'] .'/@'. $row->structural_id .'&'. Status::str_url($row->structural_name);
+                        $arr_position5[] = array(
+                            "id"            => $row->structural_id,
+                            "position"      => (($row->structural_position == null? "1":$row->structural_position)),
+                            "name"          => (($row->structural_name == null? "":$row->structural_name)),
+                            "nip"           => (($row->structural_nip == null? "":$row->structural_nip)),
+                            "title"         => (($row->structural_title == null? "":$row->structural_title)),
+                            "information"   => (($row->structural_information == null? "":$row->structural_information)),
+                            "size"          => (($row->structural_size == null)? 0:$row->structural_size),
+                            "image"         => (($row->structural_image == null? "":$row->structural_image)),
+                            "path"          => (($row->structural_path == null? Init::defaultImage():$row->structural_path)),
+                            "url"           => $url,
+                        );
+                    }
+
+
+                    $list = array(
+                        'position1'  => $arr_position1,
+                        'position2'  => $arr_position2,
+                        'position3'  => $arr_position3,
+                        'position4'  => $arr_position4,
+                        'position5'  => $arr_position5,
+                    );
+    
+                    $data = array(
+                        'info'  => $info,
+                        'list'  => $list,
+                    );
+
+                    $menu_id = 32;
+                    Dbase::processVisitor($request->ip, $satker_id, $menu_id);
+                }
+                else {
+                    $rst = 0;
+                    $validate = "Satua kerja tidak ditemukan";  
+                }
+            }
+            else {
+                $rst = 0;
+            }  
+        }
+        else {
+            $rst = 0;
+            $validate = "Kesalahan header token";  
+        }
+    
         return response()->json([
             'status'    => Init::responseStatus($rst),
             'message'   => (($validate != "")?$validate:Init::responseMessage($rst, 'View')),
@@ -1667,8 +1817,90 @@ class V1Controller extends Controller
     
                     $list = array();
                     
-                    $cnts = DB::table('tp_news')->where('news_broadcast', 1)->where('news_status', 1)->whereNot('news_id', $id)->count();
-                    $temp = DB::table('tp_news')->where('news_broadcast', 1)->where('news_status', 1)->whereNot('news_id', $id)->take($limit)->skip($offset)->orderBy('news_date', 'DESC')->get();
+                    $cnts = DB::table('tp_news')->where('satker_id', 100)->where('news_broadcast', 1)->where('news_status', 1)->whereNot('news_id', $id)->count();
+                    $temp = DB::table('tp_news')->where('satker_id', 100)->where('news_broadcast', 1)->where('news_status', 1)->whereNot('news_id', $id)->take($limit)->skip($offset)->orderBy('news_date', 'DESC')->get();
+                    
+                    foreach($temp as $row) {
+                        $date = Carbon::createFromFormat('Y-m-d', $row->news_date)
+                            ->format('d-m-Y');
+
+                        $url = Init::backendUrl() .'api/v1/read-conference-news/'. $info['profile']['satker_slug'] .'/@'. $row->news_id .'&'. Status::str_url($row->news_title);
+                        $list[] = array(
+                            "id"             => $row->news_id,
+                            "date"           => $date,
+                            "title"          => (($row->news_title == null? "":$row->news_title)),
+                            "category"       => (($row->news_category == null? "":$row->news_category)),
+                            "text_in"        => (($row->news_text_in == null? "":$row->news_text_in)),
+                            "text_en"        => (($row->news_text_en == null? "":$row->news_text_en)),
+                            "link_instagram" => (($row->news_link_instagram == null? "":$row->news_link_instagram)),
+                            "link_youtube"   => (($row->news_link_youtube == null? "":$row->news_link_youtube)),
+                            "size"           => (($row->news_size == null? 0:$row->news_size)),
+                            "image"          => (($row->news_image == null? "":$row->news_image)),
+                            "path"           => (($row->news_path == null? Init::defaultImage():$row->news_path)),
+                            "view"           => $row->news_view,
+                            "url"            => $url,
+                        );
+                    }
+    
+                    $data = array(
+                        'info'  => $info,
+                        'total' => $cnts,
+                        'list'  => $list,
+                    );
+
+                    $menu_id = 41;
+                    Dbase::processVisitor($request->ip, $satker_id, $menu_id);
+                }
+                else {
+                    $rst = 0;
+                    $validate = "Satua kerja tidak ditemukan";  
+                }
+            }
+            else {
+                $rst = 0;
+            }  
+        }
+        else {
+            $rst = 0;
+            $validate = "Kesalahan header token";  
+        }
+    
+        return response()->json([
+            'status'    => Init::responseStatus($rst),
+            'message'   => (($validate != "")?$validate:Init::responseMessage($rst, 'View')),
+            'data'      => $data],
+            200
+        );
+    }
+
+    public function getConferenceNewsRegional(Request $request) {
+        $data = array();
+        if(Init::checkHeader($request)) {
+            $id = $request->id;
+            $slug = $request->slug;
+            
+            $limit  = $request->limit;
+            $limit  = (($limit == "")?10:$limit);
+            $offset = $request->offset;
+            $offset = (($offset == "")?0:$offset);
+
+            $validate = Init::initValidate(
+                array('slug'), 
+                array($slug)
+            );
+    
+            if($validate == "") {
+                $satker = DB::table('tm_satker')->where('satker_status', 1)->where('satker_slug', $slug)->get();
+                if($satker != "[]") {
+                    $rst = 1;
+                    $satker_id = $satker[0]->satker_id;
+                    $info = Init::initSatkerInfo($satker_id, $satker);
+    
+                    $list = array();
+                    
+                    $arrSatker = Dbase::memberSatker(104);
+                    $cnts = DB::table('tp_news')->whereIn('satker_id', $arrSatker)->where('news_broadcast', 1)->where('news_status', 1)->whereNot('news_id', $id)->count();
+                    $temp = DB::table('tp_news')->whereIn('satker_id', $arrSatker)->where('news_broadcast', 1)->where('news_status', 1)->whereNot('news_id', $id)->take($limit)->skip($offset)->orderBy('news_date', 'DESC')->get();
                     
                     foreach($temp as $row) {
                         $date = Carbon::createFromFormat('Y-m-d', $row->news_date)
@@ -3071,8 +3303,10 @@ class V1Controller extends Controller
                     }
 
                     $news = array();
-                    $article = DB::table('tp_news')->where('satker_id', $satker_id)->where('news_category', 'Berita')->where('news_status', 1)->limit(4)->orderBy('news_date', 'DESC')->get();
+                    //$article = DB::table('tp_news')->where('satker_id', $satker_id)->where('news_category', 'Berita')->where('news_status', 1)->limit(4)->orderBy('news_date', 'DESC')->get();
+                    $article = DB::table('tp_news')->where('news_category', 'Berita')->where('news_status', 1)->where('news_broadcast', 1)->limit(4)->orderBy('news_date', 'DESC')->get();
                     foreach($article as $row) {
+                        $satker_name = Dbase::dbGetFieldById('tm_satker', 'satker_name', 'satker_id', $row->satker_id);
                         $news[] = array(
                             "id"         => (($row->news_id == null? "":$row->news_id)),
                             "title"      => (($row->news_title == null? "":$row->news_title)),
@@ -3085,6 +3319,7 @@ class V1Controller extends Controller
                             "image"      => (($row->news_image == null? "":$row->news_image)),
                             "path"       => (($row->news_path == null? Init::defaultImage():$row->news_path)),
                             "view"       => $row->news_view,
+                            "satker"     => $satker_name,
                         );
                     }
 

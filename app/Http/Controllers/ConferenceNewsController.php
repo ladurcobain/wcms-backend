@@ -311,4 +311,56 @@ class ConferenceNewsController extends Controller
             200
         );
     }
+
+    public function getNew(Request $request) {
+        $satker = $request->satker_id;
+
+        $limit  = $request->limit;
+        $limit  = (($limit == "")?10:$limit);
+        $offset = $request->offset;
+        $offset = (($offset == "")?0:$offset);
+
+        $cnt = 0;
+        $tmp = array();
+
+        $start = (($request->start == "")?init::defaultStartDate():$request->start);
+        $end   = (($request->end == "")?init::defaultEndDate():$request->end);
+
+        if($satker != "") {
+            $arrSatker = Dbase::memberSatker($satker);
+
+            if($request->title != "") {
+                $tmp = DB::table($this->table)->whereBetween('news_date', [$start, $end])->whereIn('satker_id', $arrSatker)->where('news_title', 'like', '%'.$request->title.'%')->where('is_deleted', 0)->take($limit)->skip($offset)->orderBy('news_date', 'DESC')->get();
+                $cnt = DB::table($this->table)->whereBetween('news_date', [$start, $end])->whereIn('satker_id', $arrSatker)->where('news_title', 'like', '%'.$request->title.'%')->where('is_deleted', 0)->count();
+            }    
+            else {
+                $tmp = DB::table($this->table)->whereBetween('news_date', [$start, $end])->whereIn('satker_id', $arrSatker)->where('is_deleted', 0)->take($limit)->skip($offset)->orderBy('news_date', 'DESC')->get();
+                $cnt = DB::table($this->table)->whereBetween('news_date', [$start, $end])->whereIn('satker_id', $arrSatker)->where('is_deleted', 0)->count();
+            }
+        }
+        else {
+            if($request->title != "") {
+                $tmp = DB::table($this->table)->whereBetween('news_date', [$start, $end])->where('news_title', 'like', '%'.$request->title.'%')->where('is_deleted', 0)->take($limit)->skip($offset)->orderBy('news_date', 'DESC')->get();
+                $cnt = DB::table($this->table)->whereBetween('news_date', [$start, $end])->where('news_title', 'like', '%'.$request->title.'%')->where('is_deleted', 0)->count();
+            }    
+            else {
+                $tmp = DB::table($this->table)->whereBetween('news_date', [$start, $end])->where('is_deleted', 0)->take($limit)->skip($offset)->orderBy('news_date', 'DESC')->get();
+                $cnt = DB::table($this->table)->whereBetween('news_date', [$start, $end])->where('is_deleted', 0)->count();
+            }
+        }
+        
+        $arr = Init::initConferenceNews(1, $tmp);
+        $rst = (($cnt > 0)?1:0);
+        $data = array(
+            'total' => $cnt,
+            'lists' => $arr,
+        );
+
+        return response()->json([
+            'status'    => Init::responseStatus($rst),
+            'message'   => Init::responseMessage($rst, 'View'),
+            'data'      => $data],
+            200
+        );
+    }
 }

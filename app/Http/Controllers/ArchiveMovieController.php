@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Helpers\Init;
 use App\Helpers\Dbase;
+use App\Helpers\Status;
 use Carbon\Carbon;
 use Exception;
 use Illuminate\Support\Facades\DB;
@@ -91,7 +92,7 @@ class ArchiveMovieController extends Controller
                 ->insertGetId([
                     "movie_title"        => $title,
                     "movie_description"  => (($description == null)? "":nl2br($description)),
-                    "movie_link"         => $link,
+                    "movie_link"         => Status::youtube_embded($link),
                     "movie_satker"       => Dbase::dbGetFieldById('tm_satker', 'satker_name', 'satker_id', $satker),
                     "satker_id"          => $satker,
                     "created_at"         => $now,
@@ -135,7 +136,7 @@ class ArchiveMovieController extends Controller
                     "movie_status"       => $status,
                     "movie_title"        => $title,
                     "movie_description"  => (($description == null)? "":nl2br($description)),
-                    "movie_link"         => $link,
+                    "movie_link"         => Status::youtube_embded($link),
                     "updated_at"         => $now,
                     "last_user"          => Dbase::dbGetFieldById('tm_user', 'user_fullname', 'user_id', $last_user),
                 ]);  

@@ -151,6 +151,7 @@
                     if($satker_id != "") {
                         $satker_name = Dbase::dbGetFieldById('tm_satker', 'satker_name', 'satker_id', $satker_id);
                         $satker_slug = Dbase::dbGetFieldById('tm_satker', 'satker_slug', 'satker_id', $satker_id);
+                        $satker_url  = Dbase::dbGetFieldById('tm_satker', 'satker_url', 'satker_id', $satker_id);
                     }   
 
                     if($row->user_login != null) {
@@ -178,6 +179,7 @@
                             "satker_id"     => (($satker_id == null? "":strval($satker_id))),
                             "satker_name"   => (($satker_id == null? "":$satker_name)),
                             "satker_slug"   => (($satker_id == null? "":$satker_slug)),
+                            "satker_url"    => (($satker_id == null? "":$satker_url)),
                             "role_id"       => (($role_id == null? "":strval($role_id))),
                             "role_name"     => (($role_id == null? "":$role_name)),
                             "created_at"    => $created_at,
@@ -204,6 +206,7 @@
                             "satker_id"     => (($satker_id == null? "":strval($satker_id))),
                             "satker_name"   => (($satker_id == null? "":$satker_name)),
                             "satker_slug"   => (($satker_id == null? "":$satker_slug)),
+                            "satker_url"    => (($satker_id == null? "":$satker_url)),
                             "role_id"       => (($role_id == null? "":strval($role_id))),
                             "role_name"     => (($role_id == null? "":$role_name)),
                             "created_at"    => $created_at,
@@ -2484,6 +2487,7 @@
                     if($flag == 1) {
                         $arr[] = array(
                             "structural_id"            => $row->structural_id,
+                            "structural_position"      => (($row->structural_position == null? "1":$row->structural_position)),
                             "structural_name"          => (($row->structural_name == null? "":$row->structural_name)),
                             "structural_nip"           => (($row->structural_nip == null? "":$row->structural_nip)),
                             "structural_title"         => (($row->structural_title == null? "":$row->structural_title)),
@@ -2502,6 +2506,7 @@
                     else {
                         $arr = array(
                             "structural_id"            => $row->structural_id,
+                            "structural_position"      => (($row->structural_position == null? "1":$row->structural_position)),
                             "structural_name"          => (($row->structural_name == null? "":$row->structural_name)),
                             "structural_nip"           => (($row->structural_nip == null? "":$row->structural_nip)),
                             "structural_title"         => (($row->structural_title == null? "":$row->structural_title)),
