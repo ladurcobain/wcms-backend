@@ -67,6 +67,7 @@ class AuthController extends Controller
                         "user_log"   => json_encode($log)
                     ]); 
                 
+                Dbase::dbSetFieldById($this->table, 'user_count', 0, 'user_account', $account);
                 dBase::setLogActivity($rst, $user['user_id'], $now, 'Login', 'Masuk aplikasi', $ip); 
 
                 if($user['satker_id'] != "") {
@@ -75,6 +76,20 @@ class AuthController extends Controller
             }
             else {
                 $arr = array();
+             
+                $count = dBase::dbGetFieldById($this->table, 'user_count', 'user_account', $account);
+                $count = $count + 1;
+                Dbase::dbSetFieldById($this->table, 'user_count', $count, 'user_account', $account);
+                Dbase::dbSetFieldById($this->table, 'user_status', 0, 'user_account', $account);
+
+                if($count > 3) {
+                    return response()->json([
+                        'status'    => Init::responseStatus(0),
+                        'message'   => 'Kata sandi salah 3x, silahkan hubungi Administrator',
+                        'data'      => array()],
+                        200
+                    );
+                }
             }
 
             return Init::initResponse($arr, 'Masuk Aplikasi');

@@ -9,3 +9,4 @@ storage
 vendor
 storage/*
 app/Helpers/Endpoint.php
+app/Helpers/Init.php

@@ -39,7 +39,7 @@
         }
 
         public static function defaultEndDate() {
-            $str = "2023-12-31";
+            $str = "2024-12-31";
             return $str;
         }
 
