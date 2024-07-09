@@ -52,7 +52,7 @@ class AuthController extends Controller
                 $agent = new \Jenssegers\Agent\Agent;
 
                 $log = [];
-                $log['ip']       = $request->ip();
+                $log['ip']       = (($ip == "")?$request->ip():$ip);
                 $log['agent']    = $request->header('user-agent');
                 $log['platform'] = $agent->platform();
                 $log['device']   = $agent->device();
