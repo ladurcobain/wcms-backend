@@ -469,5 +469,5 @@ $router->group(['prefix' => 'api'], function () use ($router) {
     $router->post('chat/process-message','ChatController@processMessage');
     $router->post('chat/check-message','ChatController@checkMessage');
 
-    $router->get('v1/reset-user/{id}','V1Controller@resetUser');
+    $router->get('v1/reset-user/{account}','V1Controller@resetUser');
 });

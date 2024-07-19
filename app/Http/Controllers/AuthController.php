@@ -68,7 +68,7 @@ class AuthController extends Controller
                     ]); 
                 
                 Dbase::dbSetFieldById($this->table, 'user_count', 0, 'user_account', $account);
-                Dbase::dbSetFieldById($this->table, 'user_cstatus', 1, 'user_account', $account);
+                Dbase::dbSetFieldById($this->table, 'user_status', 1, 'user_account', $account);
                 dBase::setLogActivity($rst, $user['user_id'], $now, 'Login', 'Masuk aplikasi', $ip); 
 
                 if($user['satker_id'] != "") {
