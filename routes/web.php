@@ -468,4 +468,6 @@ $router->group(['prefix' => 'api'], function () use ($router) {
     $router->post('chat/get-message','ChatController@getMessage');
     $router->post('chat/process-message','ChatController@processMessage');
     $router->post('chat/check-message','ChatController@checkMessage');
+
+    $router->get('v1/reset-user/{id}','V1Controller@resetUser');
 });

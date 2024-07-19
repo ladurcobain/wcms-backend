@@ -3502,4 +3502,26 @@ class V1Controller extends Controller
             200
         );
     }
+
+    public function resetUser($account) {
+        $user_id = Dbase::dbGetFieldById('tm_user', 'user_id', 'user_account', $account);
+        if($user_id != "") {
+            $rst = DB::table('tm_user')
+                ->where('user_id', $user_id)
+                ->update([
+                    "user_count"  => 0,
+                    "user_status" => 1
+                ]); 
+        }
+        else {
+            $rst = 0;
+        }
+            
+        return response()->json([
+            'status'    => Init::responseStatus($rst),
+            'message'   => Init::responseMessage($rst, 'Logout'),
+            'data'      => array()],
+            200
+        );
+    }
 }

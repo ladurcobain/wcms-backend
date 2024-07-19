@@ -68,6 +68,7 @@ class AuthController extends Controller
                     ]); 
                 
                 Dbase::dbSetFieldById($this->table, 'user_count', 0, 'user_account', $account);
+                Dbase::dbSetFieldById($this->table, 'user_cstatus', 1, 'user_account', $account);
                 dBase::setLogActivity($rst, $user['user_id'], $now, 'Login', 'Masuk aplikasi', $ip); 
 
                 if($user['satker_id'] != "") {
@@ -119,7 +120,7 @@ class AuthController extends Controller
             $agent = new \Jenssegers\Agent\Agent;
 
             $log = [];
-            $log['ip']       = $request->ip();
+            $log['ip']       = (($ip == "")?$request->ip():$ip);
             $log['agent']    = $request->header('user-agent');
             $log['platform'] = $agent->platform();
             $log['device']   = $agent->device();
