@@ -5,7 +5,8 @@
     use App\Helpers\Dbase;
     use Carbon\Carbon;
     use Illuminate\Support\Facades\DB;
-
+    use App\Helpers\Ciphertext;
+    
     class Init {
 
         public static function backendUrl()
@@ -165,6 +166,7 @@
                             "user_id"       => $row->user_id,
                             "user_type"     => $row->user_type,
                             "user_account"  => $row->user_account,
+                            "user_password" => Ciphertext::simpleDecrypt($row->user_password),
                             "user_code"     => (($row->user_code == null? "":$row->user_code)),
                             "user_fullname" => (($row->user_fullname == null? "":$row->user_fullname)),
                             "user_phone"    => (($row->user_phone == null? "":$row->user_phone)),
@@ -192,6 +194,7 @@
                             "user_id"       => $row->user_id,
                             "user_type"     => $row->user_type,
                             "user_account"  => $row->user_account,
+                            "user_password" => Ciphertext::simpleDecrypt($row->user_password),
                             "user_code"     => (($row->user_code == null? "":$row->user_code)),
                             "user_fullname" => (($row->user_fullname == null? "":$row->user_fullname)),
                             "user_phone"    => (($row->user_phone == null? "":$row->user_phone)),
