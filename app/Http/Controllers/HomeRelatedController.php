@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Helpers\Init;
 use App\Helpers\Dbase;
+use App\Helpers\Status;
 use Carbon\Carbon;
 use Exception;
 use Illuminate\Support\Facades\DB;
@@ -88,7 +89,7 @@ class HomeRelatedController extends Controller
             $now = Carbon::now();
             $rst = DB::table($this->table)
                 ->insertGetId([
-                    "related_name"   => $name,
+                    "related_name"   => Status::htmlCharacters($name),
                     "related_link"   => $link,
                     "related_satker" => Dbase::dbGetFieldById('tm_satker', 'satker_name', 'satker_id', $satker),
                     "satker_id"      => $satker,

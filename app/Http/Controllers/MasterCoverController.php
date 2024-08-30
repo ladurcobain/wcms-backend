@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Helpers\Init;
 use App\Helpers\Dbase;
+use App\Helpers\Status;
 use Carbon\Carbon;
 use Exception;
 use Illuminate\Support\Facades\DB;
@@ -95,7 +96,7 @@ class MasterCoverController extends Controller
             $now = Carbon::now();
             $rst = DB::table($this->table)
                 ->insertGetId([
-                    "cover_name"          => $name,
+                    "cover_name"          => Status::htmlCharacters($name),
                     "cover_size"          => (($size == null)? 0:$size),
                     "cover_image"         => (($file == null)? "":$file),
                     "cover_path"          => (($file == null)? "":$path),
@@ -173,7 +174,7 @@ class MasterCoverController extends Controller
                 ->where($this->field, $id)
                 ->update([
                     "cover_status"        => $status,
-                    "cover_name"          => $name,
+                    "cover_name"          => Status::htmlCharacters($name),
                     "cover_size"          => (($size == null)? 0:$size),
                     "cover_image"         => (($file == null)? "":$file),
                     "cover_path"          => (($file == null)? "":$path),

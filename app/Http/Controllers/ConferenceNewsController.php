@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Helpers\Init;
 use App\Helpers\Dbase;
+use App\Helpers\Status;
 use Carbon\Carbon;
 use Exception;
 use Illuminate\Support\Facades\DB;
@@ -122,7 +123,7 @@ class ConferenceNewsController extends Controller
             $now = Carbon::now();
             $rst = DB::table($this->table)
                 ->insertGetId([
-                    "news_title"            => $title,
+                    "news_title"            => Status::htmlCharacters($title),
                     "news_date"             => $date,
                     "news_category"         => $category,
                     "news_text_in"          => $text_in,
@@ -219,7 +220,7 @@ class ConferenceNewsController extends Controller
                 ->where($this->field, $id)
                 ->update([
                     "news_status"           => $status,
-                    "news_title"            => $title,
+                    "news_title"            => Status::htmlCharacters($title),
                     "news_date"             => $date,
                     "news_text_in"          => $text_in,
                     "news_text_en"          => $text_en,

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Helpers\Init;
 use App\Helpers\Dbase;
+use App\Helpers\Status;
 use Carbon\Carbon;
 use Exception;
 use Illuminate\Support\Facades\DB;
@@ -89,7 +90,7 @@ class InformationUnitController extends Controller
             $now = Carbon::now();
             $rst = DB::table($this->table)
                 ->insertGetId([
-                    "unit_title"       => $title,
+                    "unit_title"       => Status::htmlCharacters($title),
                     "unit_text_in"     => $text_in,
                     "unit_text_en"     => $text_en,
                     "unit_satker"      => Dbase::dbGetFieldById('tm_satker', 'satker_name', 'satker_id', $satker),
@@ -133,7 +134,7 @@ class InformationUnitController extends Controller
                 ->where($this->field, $id)
                 ->update([
                     "unit_status"     => $status,
-                    "unit_title"      => $title,
+                    "unit_title"      => Status::htmlCharacters($title),
                     "unit_text_in"    => $text_in,
                     "unit_text_en"    => $text_en,
                     "updated_at"      => $now,

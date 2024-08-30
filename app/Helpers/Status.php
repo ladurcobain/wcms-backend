@@ -78,6 +78,34 @@
             $str = str_replace(']', '', $str);
             $str = str_replace('{', '', $str);
             $str = str_replace('}', '', $str);
+            $str = str_replace('<', '', $str);
+            $str = str_replace('>', '', $str);
+            
+            return $str;
+        }
+
+        public static function htmlCharacters($str) {
+            $str = strtolower($str);
+            $str = str_replace("@", "", $str);
+            $str = str_replace("#", "", $str);
+            $str = str_replace("$", "", $str);
+            $str = str_replace("%", "", $str);
+            $str = str_replace("^", "", $str);
+            $str = str_replace("&", "", $str);
+            $str = str_replace("*", "", $str);
+            $str = str_replace("'", "", $str);
+            $str = str_replace('"', '', $str);
+            $str = str_replace('!', '', $str);
+            $str = str_replace('?', '', $str);
+            $str = str_replace('/', '', $str);
+            $str = str_replace('(', '', $str);
+            $str = str_replace('(', '', $str);
+            $str = str_replace('[', '', $str);
+            $str = str_replace(']', '', $str);
+            $str = str_replace('{', '', $str);
+            $str = str_replace('}', '', $str);
+            $str = str_replace('<', '', $str);
+            $str = str_replace('>', '', $str);
             
             return $str;
         }

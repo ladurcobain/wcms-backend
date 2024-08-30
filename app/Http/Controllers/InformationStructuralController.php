@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Helpers\Init;
 use App\Helpers\Dbase;
+use App\Helpers\Status;
 use Carbon\Carbon;
 use Exception;
 use Illuminate\Support\Facades\DB;
@@ -119,7 +120,7 @@ class InformationStructuralController extends Controller
             $rst = DB::table($this->table)
                 ->insertGetId([
                     "structural_position"      => (($position == null)? 1:$position),
-                    "structural_name"          => $name,
+                    "structural_name"          => Status::htmlCharacters($name),
                     "structural_nip"           => $nip,
                     "structural_title"         => $title,
                     "structural_size"          => (($size == null)? 0:$size),
@@ -206,7 +207,7 @@ class InformationStructuralController extends Controller
                 ->update([
                     "structural_position"      => (($position == null)? 1:$position),
                     "structural_status"        => $status,
-                    "structural_name"          => $name,
+                    "structural_name"          => Status::htmlCharacters($name),
                     "structural_nip"           => $nip,
                     "structural_title"         => $title,
                     "structural_size"          => (($size == null)? 0:$size),

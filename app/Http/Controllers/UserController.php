@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Helpers\Ciphertext;
 use App\Helpers\Dbase;
+use App\Helpers\Status;
 use App\Helpers\Init;
 use Carbon\Carbon;
 use Exception;
@@ -143,11 +144,11 @@ class UserController extends Controller
                 $now = Carbon::now();
                 $rst = DB::table($this->table)
                     ->insertGetId([
-                        "user_account"  => $account,
+                        "user_account"  => Status::htmlCharacters($account),
                         "user_password" => Ciphertext::simpleEncrypt($password),
                         "user_type"     => $type,
                         "user_code"     => (($code == null)? "":$code),
-                        "user_fullname" => (($fullname == null)? "":$fullname),
+                        "user_fullname" => (($fullname == null)? "":Status::htmlCharacters($fullname)),
                         "user_phone"    => (($phone == null)? "":$phone),
                         "user_email"    => (($email == null)? "":$email),
                         "user_address"  => (($address == null)? "":nl2br($address)),
@@ -233,7 +234,7 @@ class UserController extends Controller
                 ->where($this->field, $id)
                 ->update([
                     "user_code"     => (($code == null)? "":$code),
-                    "user_fullname" => (($fullname == null)? "":$fullname),
+                    "user_fullname" => (($fullname == null)? "":Status::htmlCharacters($fullname)),
                     "user_phone"    => (($phone == null)? "":$phone),
                     "user_email"    => (($email == null)? "":$email),
                     "user_address"  => (($address == null)? "":nl2br($address)),

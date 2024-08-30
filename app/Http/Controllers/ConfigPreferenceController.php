@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Helpers\Init;
 use App\Helpers\Dbase;
+use App\Helpers\Status;
 use Carbon\Carbon;
 use Exception;
 use Illuminate\Support\Facades\DB;
@@ -38,7 +39,7 @@ class ConfigPreferenceController extends Controller
             $rst = DB::table($this->table)
                 ->where($this->field, $id)
                 ->update([
-                    "preference_appname"        => $name,
+                    "preference_appname"        => Status::htmlCharacters($name),
                     "preference_appicon"        => (($icon == null)? "":$icon),
                     "preference_appdescription" => (($description == null)? "":nl2br($description)),
                     "last_user"                 => Dbase::dbGetFieldById('tm_user', 'user_fullname', 'user_id', $last_user),

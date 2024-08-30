@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Helpers\Init;
 use App\Helpers\Dbase;
+use App\Helpers\Status;
 use Carbon\Carbon;
 use Exception;
 use Illuminate\Support\Facades\DB;
@@ -115,7 +116,7 @@ class HomeInfografisController extends Controller
             $now = Carbon::now();
             $rst = DB::table($this->table)
                 ->insertGetId([
-                    "infografis_name"   => $name,
+                    "infografis_name"   => Status::htmlCharacters($name),
                     "infografis_link"   => $link,
                     "infografis_size"   => (($size == null)? 0:$size),
                     "infografis_image"  => (($file == null)? "":$file),
@@ -196,7 +197,7 @@ class HomeInfografisController extends Controller
                 ->where($this->field, $id)
                 ->update([
                     "infografis_status" => $status,
-                    "infografis_name"   => $name,
+                    "infografis_name"   => Status::htmlCharacters($name),
                     "infografis_link"   => $link,
                     "infografis_size"   => (($size == null)? 0:$size),
                     "infografis_image"  => (($file == null)? "":$file),

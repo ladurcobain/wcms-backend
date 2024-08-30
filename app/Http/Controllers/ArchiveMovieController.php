@@ -90,7 +90,7 @@ class ArchiveMovieController extends Controller
             $now = Carbon::now();
             $rst = DB::table($this->table)
                 ->insertGetId([
-                    "movie_title"        => $title,
+                    "movie_title"        => Status::htmlCharacters($title),
                     "movie_description"  => (($description == null)? "":nl2br($description)),
                     "movie_link"         => Status::youtube_embded($link),
                     "movie_satker"       => Dbase::dbGetFieldById('tm_satker', 'satker_name', 'satker_id', $satker),
@@ -134,7 +134,7 @@ class ArchiveMovieController extends Controller
                 ->where($this->field, $id)
                 ->update([
                     "movie_status"       => $status,
-                    "movie_title"        => $title,
+                    "movie_title"        => Status::htmlCharacters($title),
                     "movie_description"  => (($description == null)? "":nl2br($description)),
                     "movie_link"         => Status::youtube_embded($link),
                     "updated_at"         => $now,

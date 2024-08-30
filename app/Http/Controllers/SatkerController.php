@@ -133,7 +133,7 @@ class SatkerController extends Controller
                     ->insertGetId([
                         "satker_slug"        => $slug,
                         "satker_type"        => $type,
-                        "satker_name"        => (($name == null)? "":$name),
+                        "satker_name"        => (($name == null)? "":Status::htmlCharacters($name)),
                         "satker_phone"       => (($phone == null)? "":$phone),
                         "satker_email"       => (($email == null)? "":$email),
                         "satker_address"     => (($address == null)? "":nl2br($address)),
@@ -196,7 +196,7 @@ class SatkerController extends Controller
                 ->where($this->field, $id)
                 ->update([
                     "satker_slug"        => $slug,
-                    "satker_name"        => (($name == null)? "":$name),
+                    "satker_name"        => (($name == null)? "":Status::htmlCharacters($name)),
                     "satker_phone"       => (($phone == null)? "":$phone),
                     "satker_email"       => (($email == null)? "":$email),
                     "satker_address"     => (($address == null)? "":nl2br($address)),

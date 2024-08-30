@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Helpers\Init;
 use App\Helpers\Dbase;
+use App\Helpers\Status;
 use Carbon\Carbon;
 use Exception;
 use Illuminate\Support\Facades\DB;
@@ -117,7 +118,7 @@ class ContactUsController extends Controller
             
             $rst = DB::table($this->table)
                 ->insertGetId([
-                    "contactus_name"    => $name,
+                    "contactus_name"    => Status::htmlCharacters($name),
                     "contactus_email"   => $email,
                     "contactus_subject" => (($subject == null)? "":$subject),
                     "contactus_message" => (($message == null)? "":nl2br($message)),

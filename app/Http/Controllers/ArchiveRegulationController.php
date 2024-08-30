@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Helpers\Init;
 use App\Helpers\Dbase;
+use App\Helpers\Status;
 use Carbon\Carbon;
 use Exception;
 use Illuminate\Support\Facades\DB;
@@ -114,7 +115,7 @@ class ArchiveRegulationController extends Controller
             $now = Carbon::now();
             $rst = DB::table($this->table)
                 ->insertGetId([
-                    "regulation_title"        => $title,
+                    "regulation_title"        => Status::htmlCharacters($title),
                     "regulation_file"         => (($file == null)? "":$file),
                     "regulation_path"         => (($file == null)? "":$path),
                     "regulation_description"  => (($description == null)? "":nl2br($description)),
@@ -188,7 +189,7 @@ class ArchiveRegulationController extends Controller
                 ->where($this->field, $id)
                 ->update([
                     "regulation_status"       => $status,
-                    "regulation_title"        => $title,
+                    "regulation_title"        => Status::htmlCharacters($title),
                     "regulation_file"         => (($file == null)? "":$file),
                     "regulation_path"         => (($file == null)? "":$path),
                     "regulation_description"  => (($description == null)? "":nl2br($description)),

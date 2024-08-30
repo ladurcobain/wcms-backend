@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Helpers\Init;
 use App\Helpers\Dbase;
+use App\Helpers\Status;
 use Carbon\Carbon;
 use Exception;
 use Illuminate\Support\Facades\DB;
@@ -118,7 +119,7 @@ class HomeBannerController extends Controller
             $now = Carbon::now();
             $rst = DB::table($this->table)
                 ->insertGetId([
-                    "banner_name"           => $name,
+                    "banner_name"           => Status::htmlCharacters($name),
                     "banner_title_in"       => $title_in,
                     "banner_subtitle_in"    => $subtitle_in,
                     "banner_title_en"       => $title_en,
@@ -205,7 +206,7 @@ class HomeBannerController extends Controller
                 ->where($this->field, $id)
                 ->update([
                     "banner_status"         => $status,
-                    "banner_name"           => $name,
+                    "banner_name"           => Status::htmlCharacters($name),
                     "banner_title_in"       => $title_in,
                     "banner_subtitle_in"    => $subtitle_in,
                     "banner_title_en"       => $title_en,

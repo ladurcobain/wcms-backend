@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Helpers\Init;
 use App\Helpers\Dbase;
+use App\Helpers\Status;
 use Carbon\Carbon;
 use Exception;
 use Illuminate\Support\Facades\DB;
@@ -96,7 +97,7 @@ class MasterTutorialController extends Controller
                 $now = Carbon::now();
                 $rst = DB::table($this->table)
                     ->insertGetId([
-                        "tutorial_name"         => $name,
+                        "tutorial_name"         => Status::htmlCharacters($name),
                         "tutorial_file"         => $file,
                         "tutorial_path"         => $path,
                         "tutorial_description"  => (($description == null)? "":nl2br($description)),
@@ -179,7 +180,7 @@ class MasterTutorialController extends Controller
                     ->where($this->field, $id)
                     ->update([
                         "tutorial_status"       => $status,
-                        "tutorial_name"         => $name,
+                        "tutorial_name"         => Status::htmlCharacters($name),
                         "tutorial_file"         => $file,
                         "tutorial_path"         => $path,
                         "tutorial_description"  => (($description == null)? "":nl2br($description)),

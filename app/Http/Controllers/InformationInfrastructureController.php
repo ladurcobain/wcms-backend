@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Helpers\Init;
 use App\Helpers\Dbase;
+use App\Helpers\Status;
 use Carbon\Carbon;
 use Exception;
 use Illuminate\Support\Facades\DB;
@@ -115,7 +116,7 @@ class InformationInfrastructureController extends Controller
             $now = Carbon::now();
             $rst = DB::table($this->table)
                 ->insertGetId([
-                    "infrastructure_name"          => $name,
+                    "infrastructure_name"          => Status::htmlCharacters($name),
                     "infrastructure_size"          => (($size == null)? 0:$size),
                     "infrastructure_image"         => (($file == null)? "":$file),
                     "infrastructure_path"          => (($file == null)? "":$path),
@@ -196,7 +197,7 @@ class InformationInfrastructureController extends Controller
                 ->where($this->field, $id)
                 ->update([
                     "infrastructure_status"        => $status,
-                    "infrastructure_name"          => $name,
+                    "infrastructure_name"          => Status::htmlCharacters($name),
                     "infrastructure_size"          => (($size == null)? 0:$size),
                     "infrastructure_image"         => (($file == null)? "":$file),
                     "infrastructure_path"          => (($file == null)? "":$path),
