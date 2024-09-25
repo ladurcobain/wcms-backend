@@ -3323,7 +3323,7 @@ class V1Controller extends Controller
                         );
                     }
 
-                    if(!empty($news)) {
+                    if($news != "") {
                         $article = DB::table('tp_news')->where('news_category', 'Berita')->where('news_status', 1)->where('news_broadcast', 1)->limit(4)->orderBy('news_date', 'DESC')->get();
                     }
                     else {
