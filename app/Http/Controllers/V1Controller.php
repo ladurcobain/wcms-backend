@@ -2541,7 +2541,7 @@ class V1Controller extends Controller
     
                     $list = array();
                     $cnts = DB::table('tp_photo')->where('satker_id', $satker_id)->where('photo_status', 1)->count();
-                    $temp = DB::table('tp_photo')->where('satker_id', $satker_id)->where('photo_status', 1)->take($limit)->skip($offset)->orderBy('photo_id', 'ASC')->get();
+                    $temp = DB::table('tp_photo')->where('satker_id', $satker_id)->where('photo_status', 1)->take($limit)->skip($offset)->orderBy('photo_id', 'DESC')->get();
                     foreach($temp as $row) {
                         $list[] = array(
                             "title"        => (($row->photo_title == null? "":$row->photo_title)),
