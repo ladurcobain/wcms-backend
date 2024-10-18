@@ -104,7 +104,7 @@ class V1Controller extends Controller
                     $info = Init::initSatkerInfo($satker_id, $satker);
     
                     $list = array();
-                    $temp = DB::table('tp_info')->where('satker_id', $satker_id)->where('info_status', 1)->get();
+                    $temp = DB::table('tp_info')->where('satker_id', $satker_id)->where('info_status', 1)->orderBy('info_id', 'DESC')->get();
                     foreach($temp as $row) {
                         $list[] = array(
                             "text_in"  => (($row->info_text_in == null? "":$row->info_text_in)),
@@ -159,7 +159,7 @@ class V1Controller extends Controller
                     $info = Init::initSatkerInfo($satker_id, $satker);
     
                     $list = array();
-                    $temp = DB::table('tp_story')->where('satker_id', $satker_id)->where('story_status', 1)->get();
+                    $temp = DB::table('tp_story')->where('satker_id', $satker_id)->where('story_status', 1)->orderBy('story_id', 'DESC')->get();
                     foreach($temp as $row) {
                         $list[] = array(
                             "text_in"  => (($row->story_text_in == null? "":$row->story_text_in)),
@@ -214,7 +214,7 @@ class V1Controller extends Controller
                     $info = Init::initSatkerInfo($satker_id, $satker);
     
                     $list = array();
-                    $temp = DB::table('tp_doctrin')->where('satker_id', $satker_id)->where('doctrin_status', 1)->get();
+                    $temp = DB::table('tp_doctrin')->where('satker_id', $satker_id)->where('doctrin_status', 1)->orderBy('doctrin_id', 'DESC')->get();
                     foreach($temp as $row) {
                         $list[] = array(
                             "text_in"  => (($row->doctrin_text_in == null? "":$row->doctrin_text_in)),
@@ -269,7 +269,7 @@ class V1Controller extends Controller
                     $info = Init::initSatkerInfo($satker_id, $satker);
     
                     $list = array();
-                    $temp = DB::table('tp_logo')->where('satker_id', $satker_id)->where('logo_status', 1)->get();
+                    $temp = DB::table('tp_logo')->where('satker_id', $satker_id)->where('logo_status', 1)->orderBy('logo_id', 'DESC')->get();
                     foreach($temp as $row) {
                         $list[] = array(
                             "text_in"  => (($row->logo_text_in == null? "":$row->logo_text_in)),
@@ -324,7 +324,7 @@ class V1Controller extends Controller
                     $info = Init::initSatkerInfo($satker_id, $satker);
     
                     $list = array();
-                    $temp = DB::table('tp_iad')->where('satker_id', $satker_id)->where('iad_status', 1)->get();
+                    $temp = DB::table('tp_iad')->where('satker_id', $satker_id)->where('iad_status', 1)->orderBy('iad_id', 'DESC')->get();
                     foreach($temp as $row) {
                         $list[] = array(
                             "text_in"  => (($row->iad_text_in == null? "":$row->iad_text_in)),
@@ -379,7 +379,7 @@ class V1Controller extends Controller
                     $info = Init::initSatkerInfo($satker_id, $satker);
     
                     $list = array();
-                    $temp = DB::table('tp_intro')->where('satker_id', $satker_id)->where('intro_status', 1)->get();
+                    $temp = DB::table('tp_intro')->where('satker_id', $satker_id)->where('intro_status', 1)->orderBy('intro_id', 'DESC')->get();
                     foreach($temp as $row) {
                         $list[] = array(
                             "text_in"  => (($row->intro_text_in == null? "":$row->intro_text_in)),
@@ -434,7 +434,7 @@ class V1Controller extends Controller
                     $info = Init::initSatkerInfo($satker_id, $satker);
     
                     $list = array();
-                    $temp = DB::table('tp_vision')->where('satker_id', $satker_id)->where('vision_status', 1)->get();
+                    $temp = DB::table('tp_vision')->where('satker_id', $satker_id)->where('vision_status', 1)->orderBy('vision_id', 'DESC')->get();
                     foreach($temp as $row) {
                         $list[] = array(
                             "text_in"  => (($row->vision_text_in == null? "":$row->vision_text_in)),
@@ -489,7 +489,7 @@ class V1Controller extends Controller
                     $info = Init::initSatkerInfo($satker_id, $satker);
     
                     $list = array();
-                    $temp = DB::table('tp_mision')->where('satker_id', $satker_id)->where('mision_status', 1)->get();
+                    $temp = DB::table('tp_mision')->where('satker_id', $satker_id)->where('mision_status', 1)->orderBy('mission_id', 'DESC')->get();
                     foreach($temp as $row) {
                         $list[] = array(
                             "text_in"  => (($row->mision_text_in == null? "":$row->mision_text_in)),
@@ -544,7 +544,7 @@ class V1Controller extends Controller
                     $info = Init::initSatkerInfo($satker_id, $satker);
     
                     $list = array();
-                    $temp = DB::table('tp_program')->where('satker_id', $satker_id)->where('program_status', 1)->get();
+                    $temp = DB::table('tp_program')->where('satker_id', $satker_id)->where('program_status', 1)->orderBy('program_id', 'DESC')->get();
                     foreach($temp as $row) {
                         $list[] = array(
                             "text_in"  => (($row->program_text_in == null? "":$row->program_text_in)),
@@ -599,7 +599,7 @@ class V1Controller extends Controller
                     $info = Init::initSatkerInfo($satker_id, $satker);
     
                     $list = array();
-                    $temp = DB::table('tp_command')->where('satker_id', $satker_id)->where('command_status', 1)->get();
+                    $temp = DB::table('tp_command')->where('satker_id', $satker_id)->where('command_status', 1)->orderBy('command_id', 'DESC')->get();
                     foreach($temp as $row) {
                         $list[] = array(
                             "text_in"  => (($row->command_text_in == null? "":$row->command_text_in)),
@@ -655,7 +655,7 @@ class V1Controller extends Controller
                     $info = Init::initSatkerInfo($satker_id, $satker);
     
                     $list = array();
-                    $temp = DB::table('tp_legal')->where('satker_id', $satker_id)->where('legal_status', 1)->get();
+                    $temp = DB::table('tp_legal')->where('satker_id', $satker_id)->where('legal_status', 1)->orderBy('legal_id', 'DESC')->get();
                     foreach($temp as $row) {
                         $list[] = array(
                             "text_in"  => (($row->legal_text_in == null? "":$row->legal_text_in)),
@@ -710,7 +710,7 @@ class V1Controller extends Controller
                     $info = Init::initSatkerInfo($satker_id, $satker);
     
                     $list = array();
-                    $temp = DB::table('tp_mechanism')->where('satker_id', $satker_id)->where('mechanism_status', 1)->get();
+                    $temp = DB::table('tp_mechanism')->where('satker_id', $satker_id)->where('mechanism_status', 1)->orderBy('mechanism_id', 'DESC')->get();
                     foreach($temp as $row) {
                         $list[] = array(
                             "text_in"  => (($row->mechanism_text_in == null? "":$row->mechanism_text_in)),
@@ -765,7 +765,7 @@ class V1Controller extends Controller
                     $info = Init::initSatkerInfo($satker_id, $satker);
     
                     $list = array();
-                    $temp = DB::table('tp_arrangement')->where('satker_id', $satker_id)->where('arrangement_status', 1)->get();
+                    $temp = DB::table('tp_arrangement')->where('satker_id', $satker_id)->where('arrangement_status', 1)->orderBy('arrangement_id', 'DESC')->get();
                     foreach($temp as $row) {
                         $list[] = array(
                             "text_in"  => (($row->arrangement_text_in == null? "":$row->arrangement_text_in)),
@@ -820,7 +820,7 @@ class V1Controller extends Controller
                     $info = Init::initSatkerInfo($satker_id, $satker);
     
                     $list = array();
-                    $temp = DB::table('tp_accountability')->where('satker_id', $satker_id)->where('accountability_status', 1)->get();
+                    $temp = DB::table('tp_accountability')->where('satker_id', $satker_id)->where('accountability_status', 1)->orderBy('accountability_id', 'DESC')->get();
                     foreach($temp as $row) {
                         $list[] = array(
                             "text_in"  => (($row->accountability_text_in == null? "":$row->accountability_text_in)),
@@ -875,7 +875,7 @@ class V1Controller extends Controller
                     $info = Init::initSatkerInfo($satker_id, $satker);
     
                     $list = array();
-                    $temp = DB::table('tp_professionalism')->where('satker_id', $satker_id)->where('professionalism_status', 1)->get();
+                    $temp = DB::table('tp_professionalism')->where('satker_id', $satker_id)->where('professionalism_status', 1)->orderBy('professionalism_id', 'DESC')->get();
                     foreach($temp as $row) {
                         $list[] = array(
                             "text_in"  => (($row->professionalism_text_in == null? "":$row->professionalism_text_in)),
@@ -930,7 +930,7 @@ class V1Controller extends Controller
                     $info = Init::initSatkerInfo($satker_id, $satker);
     
                     $list = array();
-                    $temp = DB::table('tp_innovation')->where('satker_id', $satker_id)->where('innovation_status', 1)->get();
+                    $temp = DB::table('tp_innovation')->where('satker_id', $satker_id)->where('innovation_status', 1)->orderBy('innovation_id', 'DESC')->get();
                     foreach($temp as $row) {
                         $list[] = array(
                             "text_in"  => (($row->innovation_text_in == null? "":$row->innovation_text_in)),
@@ -985,7 +985,7 @@ class V1Controller extends Controller
                     $info = Init::initSatkerInfo($satker_id, $satker);
     
                     $list = array();
-                    $temp = DB::table('tp_supervision')->where('satker_id', $satker_id)->where('supervision_status', 1)->get();
+                    $temp = DB::table('tp_supervision')->where('satker_id', $satker_id)->where('supervision_status', 1)->orderBy('supervision_id', 'DESC')->get();
                     foreach($temp as $row) {
                         $list[] = array(
                             "text_in"  => (($row->supervision_text_in == null? "":$row->supervision_text_in)),
@@ -1048,7 +1048,7 @@ class V1Controller extends Controller
 
                     $list = array();
                     $cnts = DB::table('tp_unit')->where('satker_id', $satker_id)->where('unit_status', 1)->count();
-                    $temp = DB::table('tp_unit')->where('satker_id', $satker_id)->where('unit_status', 1)->take($limit)->skip($offset)->get();
+                    $temp = DB::table('tp_unit')->where('satker_id', $satker_id)->where('unit_status', 1)->take($limit)->skip($offset)->orderBy('unit_id', 'DESC')->get();
                     foreach($temp as $row) {
                         $url = Init::backendUrl() .'api/v1/read-information-unit/'. $info['profile']['satker_slug'] .'/@'. $row->unit_id .'&'. Status::str_url($row->unit_title);
                         $list[] = array(
@@ -1167,7 +1167,7 @@ class V1Controller extends Controller
     
                     $list = array();
                     $cnts = DB::table('tp_structural')->where('satker_id', $satker_id)->where('structural_status', 1)->count();
-                    $temp = DB::table('tp_structural')->where('satker_id', $satker_id)->where('structural_status', 1)->take($limit)->skip($offset)->get();
+                    $temp = DB::table('tp_structural')->where('satker_id', $satker_id)->where('structural_status', 1)->take($limit)->skip($offset)->orderBy('structural_id', 'DESC')->get();
                     foreach($temp as $row) {
                         $url = Init::backendUrl() .'api/v1/read-information-structural/'. $info['profile']['satker_slug'] .'/@'. $row->structural_id .'&'. Status::str_url($row->structural_name);
                         $list[] = array(
@@ -1444,7 +1444,7 @@ class V1Controller extends Controller
     
                     $list = array();
                     $cnts = DB::table('tp_infrastructure')->where('satker_id', $satker_id)->where('infrastructure_status', 1)->count();
-                    $temp = DB::table('tp_infrastructure')->where('satker_id', $satker_id)->where('infrastructure_status', 1)->take($limit)->skip($offset)->get();
+                    $temp = DB::table('tp_infrastructure')->where('satker_id', $satker_id)->where('infrastructure_status', 1)->take($limit)->skip($offset)->orderBy('infrastructure_id', 'DESC')->get();
                     foreach($temp as $row) {
                         $url = Init::backendUrl() .'api/v1/read-information-infrastructure/'. $info['profile']['satker_slug'] .'/@'. $row->infrastructure_id .'&'. Status::str_url($row->infrastructure_name);
                         $list[] = array(
@@ -1567,7 +1567,7 @@ class V1Controller extends Controller
     
                     $list = array();
                     $cnts = DB::table('tp_dpo')->where('satker_id', $satker_id)->where('dpo_status', 1)->count();
-                    $temp = DB::table('tp_dpo')->where('satker_id', $satker_id)->where('dpo_status', 1)->take($limit)->skip($offset)->get();
+                    $temp = DB::table('tp_dpo')->where('satker_id', $satker_id)->where('dpo_status', 1)->take($limit)->skip($offset)->orderBy('dpo_id', 'DESC')->get();
                     foreach($temp as $row) {
                         $url = Init::backendUrl() .'api/v1/read-information-dpo/'. $info['profile']['satker_slug'] .'/@'. $row->dpo_id .'&'. Status::str_url($row->dpo_name);
                         $list[] = array(
@@ -1690,7 +1690,7 @@ class V1Controller extends Controller
                     
                     $list = array();
                     $cnts = DB::table('tp_service')->where('satker_id', $satker_id)->where('service_status', 1)->count();
-                    $temp = DB::table('tp_service')->where('satker_id', $satker_id)->where('service_status', 1)->take($limit)->skip($offset)->get();
+                    $temp = DB::table('tp_service')->where('satker_id', $satker_id)->where('service_status', 1)->take($limit)->skip($offset)->orderBy('service_id', 'DESC')->get();
                     foreach($temp as $row) {
                         $url = Init::backendUrl() .'api/v1/read-information-service/'. $info['profile']['satker_slug'] .'/@'. $row->service_id .'&'. Status::str_url($row->service_title);
                         $list[] = array(
@@ -2214,7 +2214,7 @@ class V1Controller extends Controller
     
                     $list = array();
                     $cnts = DB::table('tp_announcement')->where('satker_id', $satker_id)->where('announcement_status', 1)->count();
-                    $temp = DB::table('tp_announcement')->where('satker_id', $satker_id)->where('announcement_status', 1)->take($limit)->skip($offset)->get();
+                    $temp = DB::table('tp_announcement')->where('satker_id', $satker_id)->where('announcement_status', 1)->take($limit)->skip($offset)->orderBy('announcement_id', 'DESC')->get();
                     foreach($temp as $row) {
                         $url = Init::backendUrl() .'api/v1/read-conference-announcement/'. $info['profile']['satker_slug'] .'/@'. $row->announcement_id .'&'. Status::str_url($row->announcement_title);
                         $list[] = array(
@@ -2343,7 +2343,7 @@ class V1Controller extends Controller
     
                     $list = array();
                     $cnts = DB::table('tp_event')->where('satker_id', $satker_id)->where('event_status', 1)->count();
-                    $temp = DB::table('tp_event')->where('satker_id', $satker_id)->where('event_status', 1)->take($limit)->skip($offset)->get();
+                    $temp = DB::table('tp_event')->where('satker_id', $satker_id)->where('event_status', 1)->take($limit)->skip($offset)->orderBy('event_date', 'DESC')->get();
                     foreach($temp as $row) {
                         $url = Init::backendUrl() .'api/v1/read-conference-event/'. $info['profile']['satker_slug'] .'/@'. $row->event_id .'&'. Status::str_url($row->event_title);
                         $list[] = array(
@@ -2475,7 +2475,7 @@ class V1Controller extends Controller
     
                     $list = array();
                     $cnts = DB::table('tp_regulation')->where('satker_id', $satker_id)->where('regulation_status', 1)->count();
-                    $temp = DB::table('tp_regulation')->where('satker_id', $satker_id)->where('regulation_status', 1)->take($limit)->skip($offset)->get();
+                    $temp = DB::table('tp_regulation')->where('satker_id', $satker_id)->where('regulation_status', 1)->take($limit)->skip($offset)->orderBy('regulation_id', 'DESC')->get();
                     foreach($temp as $row) {
                         $list[] = array(
                             "title"        => (($row->regulation_title == null? "":$row->regulation_title)),
@@ -2607,7 +2607,7 @@ class V1Controller extends Controller
     
                     $list = array();
                     $cnts = DB::table('tp_movie')->where('satker_id', $satker_id)->where('movie_status', 1)->count();
-                    $temp = DB::table('tp_movie')->where('satker_id', $satker_id)->where('movie_status', 1)->take($limit)->skip($offset)->get();
+                    $temp = DB::table('tp_movie')->where('satker_id', $satker_id)->where('movie_status', 1)->take($limit)->skip($offset)->orderBy('movie_id', 'DESC')->get();
                     foreach($temp as $row) {
                         $list[] = array(
                             "title"        => (($row->movie_title == null? "":$row->movie_title)),
@@ -2665,7 +2665,7 @@ class V1Controller extends Controller
                     $info = Init::initSatkerInfo($satker_id, $satker);
     
                     $list = array();
-                    $temp = DB::table('tp_banner')->where('satker_id', $satker_id)->where('banner_status', 1)->get();
+                    $temp = DB::table('tp_banner')->where('satker_id', $satker_id)->where('banner_status', 1)->orderBy('banner_id', 'DESC')->get();
                     foreach($temp as $row) {
                         $list[] = array(
                             "name"           => (($row->banner_name == null? "":$row->banner_name)),
@@ -2723,7 +2723,7 @@ class V1Controller extends Controller
                     $info = Init::initSatkerInfo($satker_id, $satker);
     
                     $list = array();
-                    $temp = DB::table('tp_infografis')->where('satker_id', $satker_id)->where('infografis_status', 1)->get();
+                    $temp = DB::table('tp_infografis')->where('satker_id', $satker_id)->where('infografis_status', 1)->orderBy('infografis_id', 'DESC')->get();
                     foreach($temp as $row) {
                         $list[] = array(
                             "name"       => (($row->infografis_name == null? "":$row->infografis_name)),
@@ -2778,7 +2778,7 @@ class V1Controller extends Controller
                     $info = Init::initSatkerInfo($satker_id, $satker);
     
                     $list = array();
-                    $temp = DB::table('tp_related')->where('satker_id', $satker_id)->where('related_status', 1)->get();
+                    $temp = DB::table('tp_related')->where('satker_id', $satker_id)->where('related_status', 1)->orderBy('related_id', 'DESC')->get();
                     foreach($temp as $row) {
                         $list[] = array(
                             "name"  => (($row->related_name == null? "":$row->related_name)),
@@ -2833,7 +2833,7 @@ class V1Controller extends Controller
                     $info = Init::initSatkerInfo($satker_id, $satker);
     
                     $list = array();
-                    $temp = DB::table('tp_medsos')->where('satker_id', $satker_id)->where('medsos_status', 1)->get();
+                    $temp = DB::table('tp_medsos')->where('satker_id', $satker_id)->where('medsos_status', 1)->orderBy('medsos_id', 'DESC')->get();
                     foreach($temp as $row) {
                         $list[] = array(
                             "type"   => (($row->medsos_type == null? "":Status::medsosName($row->medsos_type))),
@@ -3253,7 +3253,7 @@ class V1Controller extends Controller
                         ]);
                     
                     $banner = array();
-                    $slider = DB::table('tp_banner')->where('satker_id', $satker_id)->where('banner_status', 1)->orderBy('banner_id')->get();
+                    $slider = DB::table('tp_banner')->where('satker_id', $satker_id)->where('banner_status', 1)->orderBy('banner_id', 'DESC')->get();
                     foreach($slider as $row) {
                         $banner[] = array(
                             "name"           => (($row->banner_name == null? "":$row->banner_name)),
@@ -3268,7 +3268,7 @@ class V1Controller extends Controller
                     }
 
                     $unit = array();
-                    $organization = DB::table('tp_unit')->where('satker_id', $satker_id)->where('unit_status', 1)->orderBy('unit_id')->get();
+                    $organization = DB::table('tp_unit')->where('satker_id', $satker_id)->where('unit_status', 1)->orderBy('unit_id', 'DESC')->get();
                     foreach($organization as $row) {
                         $unit[] = array(
                             "id"       => $row->unit_id,
@@ -3279,7 +3279,7 @@ class V1Controller extends Controller
                     }
 
                     $infografis = array();
-                    $grafis = DB::table('tp_infografis')->where('satker_id', $satker_id)->where('infografis_status', 1)->orderBy('infografis_id')->get();
+                    $grafis = DB::table('tp_infografis')->where('satker_id', $satker_id)->where('infografis_status', 1)->orderBy('infografis_id', 'DESC')->get();
                     foreach($grafis as $row) {
                         $infografis[] = array(
                             "name"           => (($row->infografis_name == null? "":$row->infografis_name)),
