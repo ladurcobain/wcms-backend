@@ -3475,8 +3475,8 @@ class V1Controller extends Controller
             $child = Dbase::getChildNavigationMenu($row->menu_id);
             $parent[] = array(
                 "menu_id"           => $row->menu_id,
-                "menu_name"         => $row->menu_name,
-                "menu_label"        => $row->menu_label,
+                "menu_name"         => strip_tags($row->menu_name),
+                "menu_label"        => strip_tags($row->menu_label),
                 "menu_description"  => $row->menu_description,
                 "menu_icon"         => $row->menu_icon,
                 "menu_url"          => $row->menu_url,
