@@ -276,6 +276,9 @@
             $str = str_replace("script />", "", $str);
             $str = str_replace("script>", "", $str);
             
+            $str = str_replace('>', '', $str);
+            $str = str_replace('type="text/javascript"', '', $str);
+            
             return $str;
         }
     }
