@@ -268,5 +268,15 @@
     
             return $string;
         }
+
+
+        public static function removeScriptTags($str) {
+            $str = str_replace("<script", "", $str);
+            $str = str_replace("<script ", "", $str);
+            $str = str_replace("script />", "", $str);
+            $str = str_replace("script>", "", $str);
+            
+            return $str;
+        }
     }
 ?>

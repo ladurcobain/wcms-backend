@@ -107,8 +107,8 @@ class V1Controller extends Controller
                     $temp = DB::table('tp_info')->where('satker_id', $satker_id)->where('info_status', 1)->orderBy('info_id', 'DESC')->get();
                     foreach($temp as $row) {
                         $list[] = array(
-                            "text_in"  => (($row->info_text_in == null? "":$row->info_text_in)),
-                            "text_en"  => (($row->info_text_en == null? "":$row->info_text_en)),
+                            "text_in"  => (($row->info_text_in == null? "":Status::removeScriptTags($row->info_text_in))),
+                            "text_en"  => (($row->info_text_en == null? "":removeScriptTags($row->info_text_en))),
                         );
                     }
     
