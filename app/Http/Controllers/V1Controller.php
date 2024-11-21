@@ -108,7 +108,7 @@ class V1Controller extends Controller
                     foreach($temp as $row) {
                         $list[] = array(
                             "text_in"  => (($row->info_text_in == null? "":Status::removeScriptTags($row->info_text_in))),
-                            "text_en"  => (($row->info_text_en == null? "":removeScriptTags($row->info_text_en))),
+                            "text_en"  => (($row->info_text_en == null? "":Status::removeScriptTags($row->info_text_en))),
                         );
                     }
     
