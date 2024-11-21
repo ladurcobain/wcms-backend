@@ -162,8 +162,8 @@ class V1Controller extends Controller
                     $temp = DB::table('tp_story')->where('satker_id', $satker_id)->where('story_status', 1)->orderBy('story_id', 'DESC')->get();
                     foreach($temp as $row) {
                         $list[] = array(
-                            "text_in"  => (($row->story_text_in == null? "":$row->story_text_in)),
-                            "text_en"  => (($row->story_text_en == null? "":$row->story_text_en)),
+                            "text_in"  => (($row->story_text_in == null? "":Status::removeScriptTags($row->story_text_in))),
+                            "text_en"  => (($row->story_text_en == null? "":Status::removeScriptTags($row->story_text_en))),
                         );
                     }
     
@@ -217,8 +217,8 @@ class V1Controller extends Controller
                     $temp = DB::table('tp_doctrin')->where('satker_id', $satker_id)->where('doctrin_status', 1)->orderBy('doctrin_id', 'DESC')->get();
                     foreach($temp as $row) {
                         $list[] = array(
-                            "text_in"  => (($row->doctrin_text_in == null? "":$row->doctrin_text_in)),
-                            "text_en"  => (($row->doctrin_text_en == null? "":$row->doctrin_text_en)),
+                            "text_in"  => (($row->doctrin_text_in == null? "":Status::removeScriptTags($row->doctrin_text_in))),
+                            "text_en"  => (($row->doctrin_text_en == null? "":Status::removeScriptTags($row->doctrin_text_en))),
                         );
                     }
     
@@ -272,8 +272,8 @@ class V1Controller extends Controller
                     $temp = DB::table('tp_logo')->where('satker_id', $satker_id)->where('logo_status', 1)->orderBy('logo_id', 'DESC')->get();
                     foreach($temp as $row) {
                         $list[] = array(
-                            "text_in"  => (($row->logo_text_in == null? "":$row->logo_text_in)),
-                            "text_en"  => (($row->logo_text_en == null? "":$row->logo_text_en)),
+                            "text_in"  => (($row->logo_text_in == null? "":Status::removeScriptTags($row->logo_text_in))),
+                            "text_en"  => (($row->logo_text_en == null? "":Status::removeScriptTags($row->logo_text_en))),
                         );
                     }
     
@@ -327,8 +327,8 @@ class V1Controller extends Controller
                     $temp = DB::table('tp_iad')->where('satker_id', $satker_id)->where('iad_status', 1)->orderBy('iad_id', 'DESC')->get();
                     foreach($temp as $row) {
                         $list[] = array(
-                            "text_in"  => (($row->iad_text_in == null? "":$row->iad_text_in)),
-                            "text_en"  => (($row->iad_text_en == null? "":$row->iad_text_en)),
+                            "text_in"  => (($row->iad_text_in == null? "":Status::removeScriptTags($row->iad_text_in))),
+                            "text_en"  => (($row->iad_text_en == null? "":Status::removeScriptTags($row->iad_text_en))),
                         );
                     }
     
@@ -382,8 +382,8 @@ class V1Controller extends Controller
                     $temp = DB::table('tp_intro')->where('satker_id', $satker_id)->where('intro_status', 1)->orderBy('intro_id', 'DESC')->get();
                     foreach($temp as $row) {
                         $list[] = array(
-                            "text_in"  => (($row->intro_text_in == null? "":$row->intro_text_in)),
-                            "text_en"  => (($row->intro_text_en == null? "":$row->intro_text_en)),
+                            "text_in"  => (($row->intro_text_in == null? "":Status::removeScriptTags($row->intro_text_in))),
+                            "text_en"  => (($row->intro_text_en == null? "":Status::removeScriptTags($row->intro_text_en))),
                         );
                     }
     
@@ -437,8 +437,8 @@ class V1Controller extends Controller
                     $temp = DB::table('tp_vision')->where('satker_id', $satker_id)->where('vision_status', 1)->orderBy('vision_id', 'DESC')->get();
                     foreach($temp as $row) {
                         $list[] = array(
-                            "text_in"  => (($row->vision_text_in == null? "":$row->vision_text_in)),
-                            "text_en"  => (($row->vision_text_en == null? "":$row->vision_text_en)),
+                            "text_in"  => (($row->vision_text_in == null? "":Status::removeScriptTags($row->vision_text_in))),
+                            "text_en"  => (($row->vision_text_en == null? "":Status::removeScriptTags($row->vision_text_en))),
                         );
                     }
     
@@ -492,8 +492,8 @@ class V1Controller extends Controller
                     $temp = DB::table('tp_mision')->where('satker_id', $satker_id)->where('mision_status', 1)->orderBy('mission_id', 'DESC')->get();
                     foreach($temp as $row) {
                         $list[] = array(
-                            "text_in"  => (($row->mision_text_in == null? "":$row->mision_text_in)),
-                            "text_en"  => (($row->mision_text_en == null? "":$row->mision_text_en)),
+                            "text_in"  => (($row->mision_text_in == null? "":Status::removeScriptTags($row->mision_text_in))),
+                            "text_en"  => (($row->mision_text_en == null? "":Status::removeScriptTags($row->mision_text_en))),
                         );
                     }
     
@@ -547,8 +547,8 @@ class V1Controller extends Controller
                     $temp = DB::table('tp_program')->where('satker_id', $satker_id)->where('program_status', 1)->orderBy('program_id', 'DESC')->get();
                     foreach($temp as $row) {
                         $list[] = array(
-                            "text_in"  => (($row->program_text_in == null? "":$row->program_text_in)),
-                            "text_en"  => (($row->program_text_en == null? "":$row->program_text_en)),
+                            "text_in"  => (($row->program_text_in == null? "":Status::removeScriptTags($row->program_text_in))),
+                            "text_en"  => (($row->program_text_en == null? "":Status::removeScriptTags($row->program_text_en))),
                         );
                     }
     
@@ -602,8 +602,8 @@ class V1Controller extends Controller
                     $temp = DB::table('tp_command')->where('satker_id', $satker_id)->where('command_status', 1)->orderBy('command_id', 'DESC')->get();
                     foreach($temp as $row) {
                         $list[] = array(
-                            "text_in"  => (($row->command_text_in == null? "":$row->command_text_in)),
-                            "text_en"  => (($row->command_text_en == null? "":$row->command_text_en)),
+                            "text_in"  => (($row->command_text_in == null? "":Status::removeScriptTags($row->command_text_in))),
+                            "text_en"  => (($row->command_text_en == null? "":Status::removeScriptTags($row->command_text_en))),
                         );
                     }
     
@@ -658,8 +658,8 @@ class V1Controller extends Controller
                     $temp = DB::table('tp_legal')->where('satker_id', $satker_id)->where('legal_status', 1)->orderBy('legal_id', 'DESC')->get();
                     foreach($temp as $row) {
                         $list[] = array(
-                            "text_in"  => (($row->legal_text_in == null? "":$row->legal_text_in)),
-                            "text_en"  => (($row->legal_text_en == null? "":$row->legal_text_en)),
+                            "text_in"  => (($row->legal_text_in == null? "":Status::removeScriptTags($row->legal_text_in))),
+                            "text_en"  => (($row->legal_text_en == null? "":Status::removeScriptTags($row->legal_text_en))),
                         );
                     }
     
@@ -713,8 +713,8 @@ class V1Controller extends Controller
                     $temp = DB::table('tp_mechanism')->where('satker_id', $satker_id)->where('mechanism_status', 1)->orderBy('mechanism_id', 'DESC')->get();
                     foreach($temp as $row) {
                         $list[] = array(
-                            "text_in"  => (($row->mechanism_text_in == null? "":$row->mechanism_text_in)),
-                            "text_en"  => (($row->mechanism_text_en == null? "":$row->mechanism_text_en)),
+                            "text_in"  => (($row->mechanism_text_in == null? "":Status::removeScriptTags($row->mechanism_text_in))),
+                            "text_en"  => (($row->mechanism_text_en == null? "":Status::removeScriptTags($row->mechanism_text_en))),
                         );
                     }
     
@@ -768,8 +768,8 @@ class V1Controller extends Controller
                     $temp = DB::table('tp_arrangement')->where('satker_id', $satker_id)->where('arrangement_status', 1)->orderBy('arrangement_id', 'DESC')->get();
                     foreach($temp as $row) {
                         $list[] = array(
-                            "text_in"  => (($row->arrangement_text_in == null? "":$row->arrangement_text_in)),
-                            "text_en"  => (($row->arrangement_text_en == null? "":$row->arrangement_text_en)),
+                            "text_in"  => (($row->arrangement_text_in == null? "":Status::removeScriptTags($row->arrangement_text_in))),
+                            "text_en"  => (($row->arrangement_text_en == null? "":Status::removeScriptTags($row->arrangement_text_en))),
                         );
                     }
     
@@ -823,8 +823,8 @@ class V1Controller extends Controller
                     $temp = DB::table('tp_accountability')->where('satker_id', $satker_id)->where('accountability_status', 1)->orderBy('accountability_id', 'DESC')->get();
                     foreach($temp as $row) {
                         $list[] = array(
-                            "text_in"  => (($row->accountability_text_in == null? "":$row->accountability_text_in)),
-                            "text_en"  => (($row->accountability_text_en == null? "":$row->accountability_text_en)),
+                            "text_in"  => (($row->accountability_text_in == null? "":Status::removeScriptTags($row->accountability_text_in))),
+                            "text_en"  => (($row->accountability_text_en == null? "":Status::removeScriptTags($row->accountability_text_en))),
                         );
                     }
 
@@ -878,8 +878,8 @@ class V1Controller extends Controller
                     $temp = DB::table('tp_professionalism')->where('satker_id', $satker_id)->where('professionalism_status', 1)->orderBy('professionalism_id', 'DESC')->get();
                     foreach($temp as $row) {
                         $list[] = array(
-                            "text_in"  => (($row->professionalism_text_in == null? "":$row->professionalism_text_in)),
-                            "text_en"  => (($row->professionalism_text_en == null? "":$row->professionalism_text_en)),
+                            "text_in"  => (($row->professionalism_text_in == null? "":Status::removeScriptTags($row->professionalism_text_in))),
+                            "text_en"  => (($row->professionalism_text_en == null? "":Status::removeScriptTags($row->professionalism_text_en))),
                         );
                     }
     
@@ -933,8 +933,8 @@ class V1Controller extends Controller
                     $temp = DB::table('tp_innovation')->where('satker_id', $satker_id)->where('innovation_status', 1)->orderBy('innovation_id', 'DESC')->get();
                     foreach($temp as $row) {
                         $list[] = array(
-                            "text_in"  => (($row->innovation_text_in == null? "":$row->innovation_text_in)),
-                            "text_en"  => (($row->innovation_text_en == null? "":$row->innovation_text_en)),
+                            "text_in"  => (($row->innovation_text_in == null? "":Status::removeScriptTags($row->innovation_text_in))),
+                            "text_en"  => (($row->innovation_text_en == null? "":Status::removeScriptTags($row->innovation_text_en))),
                         );
                     }
     
@@ -988,8 +988,8 @@ class V1Controller extends Controller
                     $temp = DB::table('tp_supervision')->where('satker_id', $satker_id)->where('supervision_status', 1)->orderBy('supervision_id', 'DESC')->get();
                     foreach($temp as $row) {
                         $list[] = array(
-                            "text_in"  => (($row->supervision_text_in == null? "":$row->supervision_text_in)),
-                            "text_en"  => (($row->supervision_text_en == null? "":$row->supervision_text_en)),
+                            "text_in"  => (($row->supervision_text_in == null? "":Status::removeScriptTags($row->supervision_text_in))),
+                            "text_en"  => (($row->supervision_text_en == null? "":Status::removeScriptTags($row->supervision_text_en))),
                         );
                     }
     
@@ -1054,8 +1054,8 @@ class V1Controller extends Controller
                         $list[] = array(
                             "id"       => $row->unit_id,
                             "title"    => (($row->unit_title == null? "":$row->unit_title)),
-                            "text_in"  => (($row->unit_text_in == null? "":$row->unit_text_in)),
-                            "text_en"  => (($row->unit_text_en == null? "":$row->unit_text_en)),
+                            "text_in"  => (($row->unit_text_in == null? "":Status::removeScriptTags($row->unit_text_in))),
+                            "text_en"  => (($row->unit_text_en == null? "":Status::removeScriptTags($row->unit_text_en))),
                             "url"      => $url,
                         );
                     }
@@ -1111,8 +1111,8 @@ class V1Controller extends Controller
                     foreach($temp as $row) {
                         $read = array(
                             "title"    => (($row->unit_title == null? "":$row->unit_title)),
-                            "text_in"  => (($row->unit_text_in == null? "":$row->unit_text_in)),
-                            "text_en"  => (($row->unit_text_en == null? "":$row->unit_text_en)),
+                            "text_in"  => (($row->unit_text_in == null? "":Status::removeScriptTags($row->unit_text_in))),
+                            "text_en"  => (($row->unit_text_en == null? "":Status::removeScriptTags($row->unit_text_en))),
                         );
                     }
     
@@ -1830,8 +1830,8 @@ class V1Controller extends Controller
                             "date"           => $date,
                             "title"          => (($row->news_title == null? "":$row->news_title)),
                             "category"       => (($row->news_category == null? "":$row->news_category)),
-                            "text_in"        => (($row->news_text_in == null? "":$row->news_text_in)),
-                            "text_en"        => (($row->news_text_en == null? "":$row->news_text_en)),
+                            "text_in"        => (($row->news_text_in == null? "":Status::removeScriptTags($row->news_text_in))),
+                            "text_en"        => (($row->news_text_en == null? "":Status::removeScriptTags($row->news_text_en))),
                             "link_instagram" => (($row->news_link_instagram == null? "":$row->news_link_instagram)),
                             "link_youtube"   => (($row->news_link_youtube == null? "":$row->news_link_youtube)),
                             "size"           => (($row->news_size == null? 0:$row->news_size)),
@@ -1912,8 +1912,8 @@ class V1Controller extends Controller
                             "date"           => $date,
                             "title"          => (($row->news_title == null? "":$row->news_title)),
                             "category"       => (($row->news_category == null? "":$row->news_category)),
-                            "text_in"        => (($row->news_text_in == null? "":$row->news_text_in)),
-                            "text_en"        => (($row->news_text_en == null? "":$row->news_text_en)),
+                            "text_in"        => (($row->news_text_in == null? "":Status::removeScriptTags($row->news_text_in))),
+                            "text_en"        => (($row->news_text_en == null? "":Status::removeScriptTags($row->news_text_en))),
                             "link_instagram" => (($row->news_link_instagram == null? "":$row->news_link_instagram)),
                             "link_youtube"   => (($row->news_link_youtube == null? "":$row->news_link_youtube)),
                             "size"           => (($row->news_size == null? 0:$row->news_size)),
@@ -1995,8 +1995,8 @@ class V1Controller extends Controller
                             "date"           => $date,
                             "title"          => (($row->news_title == null? "":$row->news_title)),
                             "category"       => (($row->news_category == null? "":$row->news_category)),
-                            "text_in"        => (($row->news_text_in == null? "":$row->news_text_in)),
-                            "text_en"        => (($row->news_text_en == null? "":$row->news_text_en)),
+                            "text_in"        => (($row->news_text_in == null? "":Status::removeScriptTags($row->news_text_in))),
+                            "text_en"        => (($row->news_text_en == null? "":Status::removeScriptTags($row->news_text_en))),
                             "link_instagram" => (($row->news_link_instagram == null? "":$row->news_link_instagram)),
                             "link_youtube"   => (($row->news_link_youtube == null? "":$row->news_link_youtube)),
                             "size"           => (($row->news_size == null? 0:$row->news_size)),
@@ -2082,8 +2082,8 @@ class V1Controller extends Controller
                             "date"           => $date,
                             "title"          => (($row->news_title == null? "":$row->news_title)),
                             "category"       => (($row->news_category == null? "":$row->news_category)),
-                            "text_in"        => (($row->news_text_in == null? "":$row->news_text_in)),
-                            "text_en"        => (($row->news_text_en == null? "":$row->news_text_en)),
+                            "text_in"        => (($row->news_text_in == null? "":Status::removeScriptTags($row->news_text_in))),
+                            "text_en"        => (($row->news_text_en == null? "":Status::removeScriptTags($row->news_text_en))),
                             "link_instagram" => (($row->news_link_instagram == null? "":$row->news_link_instagram)),
                             "link_youtube"   => (($row->news_link_youtube == null? "":$row->news_link_youtube)),
                             "size"           => (($row->news_size == null? 0:$row->news_size)),
@@ -2150,8 +2150,8 @@ class V1Controller extends Controller
                             "date"           => $date,
                             "title"          => (($row->news_title == null? "":$row->news_title)),
                             "category"       => (($row->news_category == null? "":$row->news_category)),
-                            "text_in"        => (($row->news_text_in == null? "":$row->news_text_in)),
-                            "text_en"        => (($row->news_text_en == null? "":$row->news_text_en)),
+                            "text_in"        => (($row->news_text_in == null? "":Status::removeScriptTags($row->news_text_in))),
+                            "text_en"        => (($row->news_text_en == null? "":Status::removeScriptTags($row->news_text_en))),
                             "link_instagram" => (($row->news_link_instagram == null? "":$row->news_link_instagram)),
                             "link_youtube"   => (($row->news_link_youtube == null? "":$row->news_link_youtube)),
                             "size"           => (($row->news_size == null? 0:$row->news_size)),
@@ -2220,8 +2220,8 @@ class V1Controller extends Controller
                         $list[] = array(
                             "id"         => $row->announcement_id,
                             "title"      => (($row->announcement_title == null? "":$row->announcement_title)),
-                            "text_in"    => (($row->announcement_text_in == null? "":$row->announcement_text_in)),
-                            "text_en"    => (($row->announcement_text_en == null? "":$row->announcement_text_en)),
+                            "text_in"    => (($row->announcement_text_in == null? "":Status::removeScriptTags($row->announcement_text_in))),
+                            "text_en"    => (($row->announcement_text_en == null? "":Status::removeScriptTags($row->announcement_text_en))),
                             "size"       => (($row->announcement_size == null? 0:$row->announcement_size)),
                             "image"      => (($row->announcement_image == null? "":$row->announcement_image)),
                             "path"       => (($row->announcement_path == null? Init::defaultImage():$row->announcement_path)),
@@ -2281,8 +2281,8 @@ class V1Controller extends Controller
                     foreach($temp as $row) {
                         $read = array(
                             "title"      => (($row->announcement_title == null? "":$row->announcement_title)),
-                            "text_in"    => (($row->announcement_text_in == null? "":$row->announcement_text_in)),
-                            "text_en"    => (($row->announcement_text_en == null? "":$row->announcement_text_en)),
+                            "text_in"    => (($row->announcement_text_in == null? "":Status::removeScriptTags($row->announcement_text_in))),
+                            "text_en"    => (($row->announcement_text_en == null? "":Status::removeScriptTags($row->announcement_text_en))),
                             "size"       => (($row->announcement_size == null? 0:$row->announcement_size)),
                             "image"      => (($row->announcement_image == null? "":$row->announcement_image)),
                             "path"       => (($row->announcement_path == null? Init::defaultImage():$row->announcement_path)),
@@ -2350,8 +2350,8 @@ class V1Controller extends Controller
                             "id"         => $row->event_id,
                             "title"      => (($row->event_title == null? "":$row->event_title)),
                             "date"       => (($row->event_date == null? "":$row->event_date)),
-                            "text_in"    => (($row->event_text_in == null? "":$row->event_text_in)),
-                            "text_en"    => (($row->event_text_en == null? "":$row->event_text_en)),
+                            "text_in"    => (($row->event_text_in == null? "":Status::removeScriptTags($row->event_text_in))),
+                            "text_en"    => (($row->event_text_en == null? "":Status::removeScriptTags($row->event_text_en))),
                             "size"       => (($row->event_size == null? 0:$row->event_size)),
                             "image"      => (($row->event_image == null? "":$row->event_image)),
                             "path"       => (($row->event_path == null? Init::defaultImage():$row->event_path)),
@@ -2412,8 +2412,8 @@ class V1Controller extends Controller
                         $read = array(
                             "title"      => (($row->event_title == null? "":$row->event_title)),
                             "date"       => (($row->event_date == null? "":$row->event_date)),
-                            "text_in"    => (($row->event_text_in == null? "":$row->event_text_in)),
-                            "text_en"    => (($row->event_text_en == null? "":$row->event_text_en)),
+                            "text_in"    => (($row->event_text_in == null? "":Status::removeScriptTags($row->event_text_in))),
+                            "text_en"    => (($row->event_text_en == null? "":Status::removeScriptTags($row->event_text_en))),
                             "size"       => (($row->event_size == null? 0:$row->event_size)),
                             "image"      => (($row->event_image == null? "":$row->event_image)),
                             "path"       => (($row->event_path == null? Init::defaultImage():$row->event_path)),
@@ -3273,8 +3273,8 @@ class V1Controller extends Controller
                         $unit[] = array(
                             "id"       => $row->unit_id,
                             "title"    => (($row->unit_title == null? "":$row->unit_title)),
-                            "text_in"  => (($row->unit_text_in == null? "":$row->unit_text_in)),
-                            "text_en"  => (($row->unit_text_en == null? "":$row->unit_text_en)),
+                            "text_in"  => (($row->unit_text_in == null? "":Status::removeScriptTags($row->unit_text_in))),
+                            "text_en"  => (($row->unit_text_en == null? "":Status::removeScriptTags($row->unit_text_en))),
                         );
                     }
 
@@ -3313,8 +3313,8 @@ class V1Controller extends Controller
                             "date"       => (($row->news_date == null? "":$row->news_date)),
                             "category"   => (($row->news_category == null? "":$row->news_category)),
                             "titile"     => (($row->news_title == null? "":$row->news_title)),
-                            "text_in"    => (($row->news_text_in == null? "":$row->news_text_in)),
-                            "text_en"    => (($row->news_text_en == null? "":$row->news_text_en)),
+                            "text_in"    => (($row->news_text_in == null? "":Status::removeScriptTags($row->news_text_in))),
+                            "text_en"    => (($row->news_text_en == null? "":Status::removeScriptTags($row->news_text_en))),
                             "size"       => (($row->news_size == null? 0:$row->news_size)),
                             "image"      => (($row->news_image == null? "":$row->news_image)),
                             "path"       => (($row->news_path == null? Init::defaultImage():$row->news_path)),
@@ -3338,8 +3338,8 @@ class V1Controller extends Controller
                             "date"       => (($row->news_date == null? "":$row->news_date)),
                             "category"   => (($row->news_category == null? "":$row->news_category)),
                             "titile"     => (($row->news_title == null? "":$row->news_title)),
-                            "text_in"    => (($row->news_text_in == null? "":$row->news_text_in)),
-                            "text_en"    => (($row->news_text_en == null? "":$row->news_text_en)),
+                            "text_in"    => (($row->news_text_in == null? "":Status::removeScriptTags($row->news_text_in))),
+                            "text_en"    => (($row->news_text_en == null? "":Status::removeScriptTags($row->news_text_en))),
                             "size"       => (($row->news_size == null? 0:$row->news_size)),
                             "image"      => (($row->news_image == null? "":$row->news_image)),
                             "path"       => (($row->news_path == null? Init::defaultImage():$row->news_path)),
@@ -3424,8 +3424,8 @@ class V1Controller extends Controller
                             "id"       => $row->reff_id,
                             "date"     => $date,
                             "time"     => $time,
-                            "text_in"  => (($row->content_text_in == null? "":$row->content_text_in)),
-                            "text_en"  => (($row->content_text_en == null? "":$row->content_text_en)),
+                            "text_in"  => (($row->content_text_in == null? "":Status::removeScriptTags($row->content_text_in))),
+                            "text_en"  => (($row->content_text_en == null? "":Status::removeScriptTags($row->content_text_en))),
                             "menu_url" => $row->menu_url,
                             "menu_name"=> $row->menu_name,
                             "satker"   => $row->satker_name,
