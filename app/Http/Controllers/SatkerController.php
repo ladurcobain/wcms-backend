@@ -106,6 +106,8 @@ class SatkerController extends Controller
 
     public function insertData(Request $request) {
         $type          = $request->type;
+        $code          = $request->code;
+        $akronim       = $request->akronim;
         $name          = $request->name;
         $phone         = $request->phone;
         $email         = $request->email;
@@ -133,6 +135,8 @@ class SatkerController extends Controller
                     ->insertGetId([
                         "satker_slug"        => $slug,
                         "satker_type"        => $type,
+                        "satker_code"        => (($code == null)? "":$code),
+                        "satker_akronim"     => (($akronim == null)? "":$akronim),
                         "satker_name"        => (($name == null)? "":Status::htmlCharacters($name)),
                         "satker_phone"       => (($phone == null)? "":$phone),
                         "satker_email"       => (($email == null)? "":$email),
@@ -171,6 +175,8 @@ class SatkerController extends Controller
         $id            = $request->satker_id;
         $status        = $request->status;
         $url           = $request->url;
+        $code          = $request->code;
+        $akronim       = $request->akronim;
         $name          = $request->name;
         $phone         =  $request->phone;
         $email         = $request->email;
@@ -196,6 +202,8 @@ class SatkerController extends Controller
                 ->where($this->field, $id)
                 ->update([
                     "satker_slug"        => $slug,
+                    "satker_code"        => (($code == null)? "":$code),
+                    "satker_akronim"     => (($akronim == null)? "":$akronim),
                     "satker_name"        => (($name == null)? "":Status::htmlCharacters($name)),
                     "satker_phone"       => (($phone == null)? "":$phone),
                     "satker_email"       => (($email == null)? "":$email),
